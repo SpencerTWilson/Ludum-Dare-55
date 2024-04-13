@@ -69,10 +69,10 @@ func _update_volumes():
 	var sfx_volume = OptionsManager.options["Audio"]["SFX Volume"]
 	var ui_volume = OptionsManager.options["Audio"]["UI Volume"]
 	#Remap the setting onto the logmarithmic decible scale
-	master_volume = remap(master_volume, 0, 1, -70, 0)
-	music_volume = remap(music_volume, 0, 1, -70, 0)
-	sfx_volume = remap(sfx_volume, 0, 1, -70, 0)
-	ui_volume = remap(ui_volume, 0, 1, -70, 0)
+	master_volume = remap(1.5 * log(master_volume + 1), 0, 1, -70, 0)
+	music_volume = remap(1.5 * log(music_volume + 1), 0, 1, -70, 0)
+	sfx_volume = remap(1.5 * log(sfx_volume + 1), 0, 1, -70, 0)
+	ui_volume = remap(1.5 * log(ui_volume + 1), 0, 1, -70, 0)
 	#set the buses to match the new volume
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), master_volume)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), music_volume)

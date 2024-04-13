@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://efqxnvcfxsq"]
+
+[ext_resource type="StyleBox" uid="uid://lgcbwwtq7v8y" path="res://assets/textures/fantasy_border_ui/PNG/Panel/panel_025.tres" id="1_wpimh"]
+[ext_resource type="Theme" uid="uid://dl56t6bt2n25f" path="res://ui/title.tres" id="2_x61j1"]
+[ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_bwyia"]
+[ext_resource type="Script" path="res://scenes/change_scene.gd" id="4_gd4kd"]
+[ext_resource type="Script" path="res://scenes/quit_button.gd" id="5_cx4ok"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color(0.262745, 0.0862745, 0.0901961, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("1_wpimh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -181.0
+offset_right = 231.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_x61j1")
+text = "悪魔の花びら
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bwyia")
+text = "Start
+"
+script = ExtResource("4_gd4kd")
+scene_path = "res://scenes/main_scenes/main.tscn"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bwyia")
+text = "Options
+"
+script = ExtResource("4_gd4kd")
+scene_path = "res://scenes/main_scenes/options/options_screen.tscn"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bwyia")
+text = "Credits"
+script = ExtResource("4_gd4kd")
+scene_path = "res://scenes/main_scenes/credits_screen.tscn"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bwyia")
+text = "Quit"
+script = ExtResource("5_cx4ok")

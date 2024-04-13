@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxamfy5hidwtk"]
+
+[ext_resource type="StyleBox" uid="uid://lgcbwwtq7v8y" path="res://assets/textures/fantasy_border_ui/PNG/Panel/panel_025.tres" id="1_17kcj"]
+[ext_resource type="Theme" uid="uid://dl56t6bt2n25f" path="res://ui/title.tres" id="2_ds1i4"]
+[ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_4fgbm"]
+[ext_resource type="Script" path="res://scenes/change_scene.gd" id="4_p8whp"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color(0.262745, 0.0862745, 0.0901961, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("1_17kcj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -181.0
+offset_right = 231.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ds1i4")
+text = "Credits
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme = ExtResource("3_4fgbm")
+bbcode_enabled = true
+text = "[center][color=GoldenRod]Lead Game Designer - Spencer Wilson[/color]
+[color=royalblue]Technical Artist - Max Wilson[/color]
+[color=darkorchid]Rubber Duck - Dallin[/color]
+[/center]"
+fit_content = true
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_4fgbm")
+text = "Back
+"
+script = ExtResource("4_p8whp")
+scene_path = "res://scenes/main_scenes/title_screen.tscn"

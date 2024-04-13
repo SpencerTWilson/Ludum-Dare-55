@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://drkn3hgn8466d"]
+
+[ext_resource type="StyleBox" uid="uid://lgcbwwtq7v8y" path="res://assets/textures/fantasy_border_ui/PNG/Panel/panel_025.tres" id="1_bh114"]
+[ext_resource type="Theme" uid="uid://dl56t6bt2n25f" path="res://ui/title.tres" id="2_tn6bi"]
+[ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_asy51"]
+[ext_resource type="PackedScene" uid="uid://siirny71tfn" path="res://scenes/main_scenes/options/volume_slider.tscn" id="3_ry32p"]
+[ext_resource type="Script" path="res://scenes/change_scene.gd" id="4_26ap5"]
+[ext_resource type="AudioStream" uid="uid://gi2ib85ptrdk" path="res://assets/sounds/kenney_rpg_audio/Audio/clothBelt2.ogg" id="5_jn4l5"]
+[ext_resource type="AudioStream" uid="uid://c5jwbbbsdkl2x" path="res://assets/sounds/kenney_casino_audio/Audio/cardFan1.ogg" id="6_4j66s"]
+[ext_resource type="AudioStream" uid="uid://cobkmptwros51" path="res://assets/sounds/kenney_rpg_audio/Audio/drawKnife1.ogg" id="6_v5bj8"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color(0.262745, 0.0862745, 0.0901961, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("1_bh114")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -181.0
+offset_right = 231.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_tn6bi")
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_asy51")
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolumeSlider" parent="VBoxContainer" instance=ExtResource("3_ry32p")]
+layout_mode = 2
+volume_type = "Master"
+sound_to_play = ExtResource("5_jn4l5")
+
+[node name="SFX" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_asy51")
+text = "SFX Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXVolumeSlider" parent="VBoxContainer" instance=ExtResource("3_ry32p")]
+layout_mode = 2
+volume_type = "SFX"
+sound_to_play = ExtResource("6_4j66s")
+
+[node name="Music" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_asy51")
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeSlider" parent="VBoxContainer" instance=ExtResource("3_ry32p")]
+layout_mode = 2
+volume_type = "Music"
+sound_to_play = ExtResource("5_jn4l5")
+
+[node name="UI" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_asy51")
+text = "UI Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIVolumeSlider" parent="VBoxContainer" instance=ExtResource("3_ry32p")]
+layout_mode = 2
+volume_type = "UI"
+sound_to_play = ExtResource("6_v5bj8")
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_asy51")
+text = "Back"
+script = ExtResource("4_26ap5")
+scene_path = "res://scenes/main_scenes/title_screen.tscn"

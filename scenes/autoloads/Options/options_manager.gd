@@ -3,7 +3,7 @@ extends Node
 signal options_updated()
 
 var options: Dictionary = {}
-var options_file: String = "res://scenes/autoload_scripts/options/options.json"
+var options_file: String = "res://scenes/autoloads/Options/options.json"
 
 #Create the options screen, pause the game
 func _open_options_menu():

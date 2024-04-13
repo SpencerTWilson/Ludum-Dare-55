@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b21f6ysdksu0w"]
+
+[ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot.gd" id="1_p2ai7"]
+
+[node name="CardSlot" type="Node2D" groups=["card_zone"]]
+script = ExtResource("1_p2ai7")

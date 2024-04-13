@@ -40,6 +40,7 @@ func flip_card_to_slot(slot: CardSlot):
 	var new_card_type = deck_of_cards.pop_back()
 	new_card.front_texture = new_card_type["texture"]
 	new_card.tags = new_card_type["tags"]
+
 #TODO:
 #2. Make a Hanafuda Hand place that will calculate the hands you have
 #3. Make a center bit that when you play or flip a card you are able to collect matching cards

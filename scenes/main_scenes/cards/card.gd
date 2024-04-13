@@ -8,6 +8,7 @@ var front_texture: Texture2D
 var back_texture: Texture2D = preload("res://assets/textures/hanafuda/card_back.png")
 
 var selected: bool = false
+var locked: bool = false
 
 var selected_scale: float = 0.055
 var unselected_scale: float = 0.05
@@ -21,12 +22,8 @@ var flipping: bool = false
 @export var rest_slot: CardSlot
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
-	if Input.is_action_just_pressed("select") and !flipping:
+	if Input.is_action_just_pressed("select") and !flipping and !locked:
 		selected = true
-		AudioManager._play_clip(selected_sound, "SFX")
-	
-	if Input.is_action_just_pressed("info") and !selected:
-		flipping = true
 		AudioManager._play_clip(selected_sound, "SFX")
 
 func _physics_process(delta):

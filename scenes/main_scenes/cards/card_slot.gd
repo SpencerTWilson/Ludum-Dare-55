@@ -3,6 +3,7 @@ class_name CardSlot
 
 signal slot_selected(card)
 
+@export var lock_card: bool = false
 @export var whitelisted_tag: String = ""
 @export var num_cards_allowed: int = 1
 var cards: Array = []
@@ -13,6 +14,8 @@ func _ready():
 func _select(card: Card):
 	cards.append(card)
 	card.rest_slot = self
+	if lock_card:
+		card.locked = true
 	slot_selected.emit(card)
 
 func get_card_pos(_card: Card):
@@ -20,4 +23,6 @@ func get_card_pos(_card: Card):
 
 func _remove_card(card: Card):
 	if cards.has(card):
+		if lock_card:
+			card.locked = false
 		cards.erase(card)

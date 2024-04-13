@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=9 format=3 uid="uid://coqt385pnthu7"]
 
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
 [ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot_hand.gd" id="2_blfti"]
 [ext_resource type="PackedScene" uid="uid://blid8q76f6ek8" path="res://scenes/main_scenes/cards/Card.tscn" id="2_neq0k"]
 [ext_resource type="Texture2D" uid="uid://dqktgdfagyowq" path="res://assets/textures/hanafuda/card_back.png" id="2_oj05l"]
 [ext_resource type="Script" path="res://scenes/main_scenes/Deck.gd" id="2_uxd76"]
+[ext_resource type="Script" path="res://scenes/main_scenes/play_card.gd" id="5_t5g20"]
 [ext_resource type="Texture2D" uid="uid://bxcssrgskjwrk" path="res://assets/textures/hanafuda/play_card.png" id="5_xd1ad"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bcc3"]
@@ -36,12 +37,16 @@ card_scene = ExtResource("2_neq0k")
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_oj05l")
 
-[node name="PlayCard" type="Node2D" parent="."]
+[node name="PlayCard" type="Node2D" parent="." node_paths=PackedStringArray("collected_cards", "hand")]
 position = Vector2(971, 680)
+script = ExtResource("5_t5g20")
+table_slots = [NodePath("../Card Pool/CardSlot"), NodePath("../Card Pool/CardSlot2"), NodePath("../Card Pool/CardSlot3"), NodePath("../Card Pool/CardSlot4"), NodePath("../Card Pool/CardSlot5"), NodePath("../Card Pool/CardSlot6"), NodePath("../Card Pool/CardSlot7"), NodePath("../Card Pool/CardSlot8")]
+collected_cards = NodePath("../CollectedCards/CardSlot")
+hand = NodePath("../Hand")
 
 [node name="CardSlot" parent="PlayCard" instance=ExtResource("2_2i3qn")]
 position = Vector2(0, -1)
-num_cards_allowed = 2
+lock_card = true
 
 [node name="Label" type="Label" parent="PlayCard"]
 offset_left = -56.0
@@ -64,24 +69,41 @@ position = Vector2(979, 1083)
 
 [node name="CardSlot" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1199, 378)
+lock_card = true
 
 [node name="CardSlot2" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1049, 378)
+lock_card = true
 
 [node name="CardSlot3" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(899, 378)
+lock_card = true
 
 [node name="CardSlot4" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(749, 378)
+lock_card = true
 
 [node name="CardSlot5" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1199, 128)
+lock_card = true
 
 [node name="CardSlot6" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1049, 128)
+lock_card = true
 
 [node name="CardSlot7" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(899, 128)
+lock_card = true
 
 [node name="CardSlot8" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(749, 128)
+lock_card = true
+
+[node name="CollectedCards" type="Node2D" parent="."]
+position = Vector2(40, 564)
+
+[node name="CardSlot" parent="CollectedCards" instance=ExtResource("2_2i3qn")]
+lock_card = true
+num_cards_allowed = 15
+
+[connection signal="slot_selected" from="PlayCard/CardSlot" to="PlayCard" method="_on_card_slot_slot_selected"]

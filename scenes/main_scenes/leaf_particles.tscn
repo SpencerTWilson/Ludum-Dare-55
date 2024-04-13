@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c73lly5xjofum"]
+[gd_scene load_steps=4 format=3 uid="uid://c73lly5xjofum"]
 
 [ext_resource type="Texture2D" uid="uid://waqhuypw0d8s" path="res://assets/textures/kenney_foliage_sprites/PNG/Shaded/sprite_0086.png" id="1_0nmls"]
 
@@ -10,16 +10,46 @@ emission_box_extents = Vector3(1080, 0, 0)
 angle_max = 180.0
 initial_velocity_min = -50.0
 initial_velocity_max = 400.0
-gravity = Vector3(0, 98, 0)
+gravity = Vector3(0, 298.51, 0)
+radial_accel_max = 10.35
 scale_min = 0.1
 scale_max = 0.1
-hue_variation_max = 0.2
-anim_speed_max = 10.0
+color = Color(0.729412, 0.462745, 0.227451, 1)
+hue_variation_max = 0.15
+turbulence_noise_strength = 7.32
+turbulence_noise_scale = 2.368
+turbulence_noise_speed = Vector3(0.895, 0, 7.4)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w5twi"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(480, -100, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1080, 0, 0)
+angle_max = 180.0
+initial_velocity_min = -50.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 298.51, 0)
+radial_accel_max = 10.35
+scale_min = 0.1
+scale_max = 0.1
+color = Color(0.611765, 0.380392, 0.176471, 1)
+hue_variation_max = 0.15
+turbulence_noise_strength = 7.32
+turbulence_noise_scale = 2.368
+turbulence_noise_speed = Vector3(0.895, 0, 7.4)
 
 [node name="LeafParticles" type="GPUParticles2D"]
-modulate = Color(0.388235, 0.513726, 0.352941, 1)
 position = Vector2(0, -3)
-amount = 35
+amount = 80
 process_material = SubResource("ParticleProcessMaterial_pdsqc")
 texture = ExtResource("1_0nmls")
 lifetime = 15.0
+explosiveness = 0.06
+randomness = 1.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -3
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_w5twi")
+texture = ExtResource("1_0nmls")
+lifetime = 20.25

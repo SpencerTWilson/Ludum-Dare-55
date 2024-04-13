@@ -150,3 +150,33 @@ var card_types: Dictionary = {
 		"tags": ["september","ribbon","blue_ribbon"],
 	},
 }
+
+func get_month(card: Card):
+	for tag in card.tags:
+		match tag:
+			"january":
+				return "january"
+			"february":
+				return "february"
+			"march":
+				return "march"
+			"april":
+				return "april"
+			"may":
+				return "may"
+			"june":
+				return "june"
+			"july":
+				return "july"
+			"august":
+				return "august"
+			"september":
+				return "september"
+			"october":
+				return "october"
+			"november":
+				return "november"
+			"december":
+				return "december"
+			_:
+				continue

@@ -27,12 +27,11 @@ position = Vector2(969, 980)
 script = ExtResource("2_blfti")
 num_cards_allowed = 32
 
-[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("hand_slot", "collected_cards_slot")]
+[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("hand_slot")]
 position = Vector2(1735, 528)
 script = ExtResource("2_uxd76")
 table_slots = [NodePath("../Card Pool/CardSlot"), NodePath("../Card Pool/CardSlot2"), NodePath("../Card Pool/CardSlot3"), NodePath("../Card Pool/CardSlot4"), NodePath("../Card Pool/CardSlot5"), NodePath("../Card Pool/CardSlot6"), NodePath("../Card Pool/CardSlot7"), NodePath("../Card Pool/CardSlot8")]
 hand_slot = NodePath("../Hand")
-collected_cards_slot = NodePath("../CollectedCards/CardSlot")
 card_scene = ExtResource("2_neq0k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck"]
@@ -49,7 +48,6 @@ text = "End Season"
 
 [node name="CardSlot" parent="Deck" instance=ExtResource("2_2i3qn")]
 can_drop = false
-num_cards_allowed = 300
 
 [node name="PlayCard" type="Node2D" parent="." node_paths=PackedStringArray("collected_cards", "hand")]
 position = Vector2(971, 680)
@@ -83,51 +81,41 @@ position = Vector2(979, 1083)
 
 [node name="CardSlot" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1199, 378)
-can_drop = false
 lock_card = true
 
 [node name="CardSlot2" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1049, 378)
-can_drop = false
 lock_card = true
 
 [node name="CardSlot3" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(899, 378)
-can_drop = false
 lock_card = true
 
 [node name="CardSlot4" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(749, 378)
-can_drop = false
 lock_card = true
 
 [node name="CardSlot5" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1199, 128)
-can_drop = false
 lock_card = true
 
 [node name="CardSlot6" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1049, 128)
-can_drop = false
 lock_card = true
 
 [node name="CardSlot7" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(899, 128)
-can_drop = false
 lock_card = true
 
 [node name="CardSlot8" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(749, 128)
-can_drop = false
 lock_card = true
 
 [node name="CollectedCards" type="Node2D" parent="."]
 position = Vector2(40, 564)
 
 [node name="CardSlot" parent="CollectedCards" instance=ExtResource("2_2i3qn")]
-can_drop = false
 lock_card = true
 num_cards_allowed = 400
 
-[connection signal="pressed" from="Deck/EndSeasonButton" to="Deck" method="_on_end_season_button_pressed"]
 [connection signal="slot_selected" from="PlayCard/CardSlot" to="PlayCard" method="_on_card_slot_slot_selected"]

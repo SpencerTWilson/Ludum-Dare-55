@@ -21,6 +21,7 @@ OptionsManager="*res://scenes/autoloads/Options/options_manager.gd"
 AudioManager="*res://scenes/autoloads/audio_manager.gd"
 SlotManager="*res://scenes/autoloads/slot_manager.gd"
 CardManager="*res://scenes/autoloads/card_manager.gd"
+DemonManager="*res://scenes/autoloads/demon_manager.gd"
 
 [display]
 

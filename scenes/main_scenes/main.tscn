@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=12 format=3 uid="uid://coqt385pnthu7"]
 
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
 [ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot_hand.gd" id="2_blfti"]
@@ -12,6 +12,8 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bcc3"]
 bg_color = Color(0.262745, 0.0862745, 0.0901961, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jxmm"]
 
 [node name="Main" type="Node2D"]
 
@@ -79,6 +81,9 @@ texture = ExtResource("5_xd1ad")
 
 [node name="CardManager" type="Node2D" parent="." groups=["card_manager"]]
 position = Vector2(979, 1083)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CardManager"]
+process_material = SubResource("ShaderMaterial_3jxmm")
 
 [node name="Card Pool" type="Node2D" parent="."]
 

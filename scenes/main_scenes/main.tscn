@@ -66,7 +66,7 @@ script = ExtResource("2_dqjgo")
 music_track = ExtResource("14_2krcg")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(959, 1010)
+position = Vector2(959, 1004)
 amount = 506
 process_material = SubResource("ParticleProcessMaterial_05uri")
 texture = ExtResource("10_dki0p")
@@ -87,7 +87,7 @@ script = ExtResource("2_blfti")
 num_cards_allowed = 32
 
 [node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("hand_slot", "collected_cards_slot")]
-position = Vector2(1735, 528)
+position = Vector2(1735, 526)
 script = ExtResource("2_uxd76")
 table_slots = [NodePath("../Card Pool/CardSlot"), NodePath("../Card Pool/CardSlot2"), NodePath("../Card Pool/CardSlot3"), NodePath("../Card Pool/CardSlot4"), NodePath("../Card Pool/CardSlot5"), NodePath("../Card Pool/CardSlot6"), NodePath("../Card Pool/CardSlot7"), NodePath("../Card Pool/CardSlot8")]
 hand_slot = NodePath("../Hand")
@@ -144,9 +144,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_70npu")
 modulate = Color(0.384314, 0.384314, 0.384314, 1)
 texture = ExtResource("11_kwyni")
 
-[node name="CardManager" type="Node2D" parent="." groups=["card_manager"]]
-position = Vector2(979, 1083)
-
 [node name="Card Pool" type="Node2D" parent="."]
 
 [node name="CardSlot" parent="Card Pool" instance=ExtResource("2_2i3qn")]
@@ -200,12 +197,48 @@ can_drop = false
 lock_card = true
 
 [node name="CollectedCards" type="Node2D" parent="."]
-position = Vector2(40, 564)
+position = Vector2(166, 566)
 
 [node name="CardSlot" parent="CollectedCards" instance=ExtResource("2_2i3qn")]
 can_drop = false
 lock_card = true
 num_cards_allowed = 400
+
+[node name="Panel4" type="Panel" parent="CollectedCards"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -118.0
+offset_right = 87.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_nuii7")
+
+[node name="Panel5" type="Panel" parent="CollectedCards"]
+modulate = Color(0.294118, 0.294118, 0.294118, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -97.0
+offset_right = 68.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_70npu")
+
+[node name="CardManager" type="Node2D" parent="." groups=["card_manager"]]
+position = Vector2(979, 1080)
 
 [node name="ScoreCorner" type="Control" parent="."]
 layout_mode = 3

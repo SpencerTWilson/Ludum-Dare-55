@@ -4,6 +4,8 @@ extends Node2D
 @export var collected_cards: CardSlot
 @export var hand: CardSlot
 
+var collect_sound: AudioStream = preload("res://assets/sounds/kenney_rpg_audio/Audio/handleCoins2.ogg")
+
 func _ready():
 	var i: int = 0
 	for slot in table_slots:
@@ -19,6 +21,7 @@ func _on_card_slot_slot_selected(card):
 				var collected_card = slot.cards[0]
 				slot._remove_card(collected_card)
 				collected_cards._select(collected_card)
+				AudioManager._play_clip(collect_sound, "SFX")
 				break
 	
 	if $CardSlot.cards.size() > 0:

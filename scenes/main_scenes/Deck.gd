@@ -9,7 +9,8 @@ extends Node2D
 
 var deck_of_cards: Array = []
 
-var shuffle_sound: AudioStream = preload("res://assets/sounds/kenney_casino_audio/Audio/cardFan1.ogg")
+var shuffle_sound: AudioStream = preload("res://assets/sounds/kenney_casino_audio/Audio/cardFan2.ogg")
+var shuffle_sound_2: AudioStream = preload("res://assets/sounds/kenney_casino_audio/Audio/cardFan1.ogg")
 
 func _ready():
 	var i: int = 0
@@ -61,14 +62,16 @@ func _next_round():
 			$CardSlot._select(moving_card)
 			slot._remove_card(moving_card)
 	
+	AudioManager._play_clip(shuffle_sound_2, "SFX")
+	
 	for card in collected_cards_slot.cards:
 		$CardSlot._select(card)
 		await get_tree().create_timer(0.05).timeout
 	collected_cards_slot.cards.clear()
 	
-	AudioManager._play_clip(shuffle_sound, "SFX")
-	
 	await get_tree().create_timer(0.5).timeout
+	
+	AudioManager._play_clip(shuffle_sound, "SFX")
 	
 	for card in $CardSlot.cards:
 		deck_of_cards.append({"texture": card.front_texture, "tags": card.tags})

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=11 format=3 uid="uid://coqt385pnthu7"]
 
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
 [ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot_hand.gd" id="2_blfti"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_ktb85"]
 [ext_resource type="Script" path="res://scenes/main_scenes/play_card.gd" id="5_t5g20"]
 [ext_resource type="Texture2D" uid="uid://bxcssrgskjwrk" path="res://assets/textures/hanafuda/play_card.png" id="5_xd1ad"]
+[ext_resource type="Script" path="res://scenes/main_scenes/ScoreCorner.gd" id="9_tovc6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bcc3"]
 bg_color = Color(0.262745, 0.0862745, 0.0901961, 1)
@@ -128,6 +129,48 @@ position = Vector2(40, 564)
 can_drop = false
 lock_card = true
 num_cards_allowed = 400
+
+[node name="ScoreCorner" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1921.0
+offset_top = -1.0
+offset_right = 1961.0
+offset_bottom = 39.0
+script = ExtResource("9_tovc6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScoreCorner"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -402.0
+offset_top = 3.0
+offset_right = -60.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="ScoreCorner/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+theme_override_font_sizes/font_size = 45
+text = "100 ~ Total Petals"
+horizontal_alignment = 2
+
+[node name="QuotaLabel" type="Label" parent="ScoreCorner/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+theme_override_font_sizes/font_size = 30
+text = "65000000 ~ Season Petals"
+horizontal_alignment = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ScoreCorner/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+value = 50.0
+fill_mode = 1
 
 [connection signal="pressed" from="Deck/EndSeasonButton" to="Deck" method="_on_end_season_button_pressed"]
 [connection signal="slot_selected" from="PlayCard/CardSlot" to="PlayCard" method="_on_card_slot_slot_selected"]

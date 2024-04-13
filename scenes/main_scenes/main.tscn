@@ -122,6 +122,16 @@ position = Vector2(749, 128)
 can_drop = false
 lock_card = true
 
+[node name="CardSlot9" parent="Card Pool" instance=ExtResource("2_2i3qn")]
+position = Vector2(597, 376)
+can_drop = false
+lock_card = true
+
+[node name="CardSlot10" parent="Card Pool" instance=ExtResource("2_2i3qn")]
+position = Vector2(597, 126)
+can_drop = false
+lock_card = true
+
 [node name="CollectedCards" type="Node2D" parent="."]
 position = Vector2(40, 564)
 

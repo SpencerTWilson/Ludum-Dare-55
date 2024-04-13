@@ -57,6 +57,8 @@ func flip_card_to_slot(slot: CardSlot):
 		deck_empty.emit()
 
 func _next_round():
+	DemonManager.total_petals += DemonManager.season_petals
+	
 	for card in hand_slot.cards:
 		$CardSlot._select(card)
 	hand_slot.cards.clear()

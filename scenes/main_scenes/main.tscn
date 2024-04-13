@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=20 format=3 uid="uid://coqt385pnthu7"]
 
 [ext_resource type="Texture2D" uid="uid://ccfs10efgau6d" path="res://assets/textures/Sky's/4301539348_8ab6133f3e_b.png" id="1_acm4s"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cgf3t8std37gc" path="res://assets/textures/fantasy_border_ui/PNG/Panel/panel-004.png" id="10_x8hp8"]
 [ext_resource type="Texture2D" uid="uid://big8g08665q6m" path="res://assets/textures/icons/PNG/White/1x/import.png" id="11_kwyni"]
 [ext_resource type="AudioStream" uid="uid://deq58scdcq12c" path="res://assets/sounds/music/gam jam.wav" id="14_2krcg"]
+[ext_resource type="Script" path="res://scenes/main_scenes/ScoreCalculator.gd" id="15_hw7f0"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_05uri"]
 particle_flag_disable_z = true
@@ -198,6 +199,7 @@ lock_card = true
 
 [node name="CollectedCards" type="Node2D" parent="."]
 position = Vector2(166, 566)
+script = ExtResource("15_hw7f0")
 
 [node name="CardSlot" parent="CollectedCards" instance=ExtResource("2_2i3qn")]
 can_drop = false
@@ -228,9 +230,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -74.0
-offset_top = -97.0
+offset_top = -106.0
 offset_right = 68.0
-offset_bottom = 98.0
+offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -291,7 +293,7 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 value = 50.0
-fill_mode = 1
 
 [connection signal="pressed" from="Deck/EndSeasonButton" to="Deck" method="_on_end_season_button_pressed"]
 [connection signal="slot_selected" from="PlayCard/CardSlot" to="PlayCard" method="_on_card_slot_slot_selected"]
+[connection signal="slot_selected" from="CollectedCards/CardSlot" to="CollectedCards" method="_on_card_slot_slot_selected"]

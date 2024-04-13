@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://efqxnvcfxsq"]
+[gd_scene load_steps=20 format=3 uid="uid://efqxnvcfxsq"]
 
 [ext_resource type="Texture2D" uid="uid://b2o4k7i5ie3u0" path="res://assets/textures/fantasy_border_ui/PNG/Border/panel-border-025.png" id="1_gqeaa"]
 [ext_resource type="Script" path="res://scenes/main_scenes/sky.gd" id="1_k4kmx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dmv2jxkv707u4" path="res://assets/textures/fantasy_border_ui/PNG/Border/panel-border-022.png" id="4_kobt7"]
 [ext_resource type="Script" path="res://scenes/quit_button.gd" id="5_cx4ok"]
 [ext_resource type="Texture2D" uid="uid://brregv58ikpyw" path="res://assets/textures/icons/Vector/vector_whiteIcons.svg" id="7_aym2q"]
+[ext_resource type="AudioStream" uid="uid://bnc5nvfovfdbb" path="res://assets/sounds/music/wind.wav" id="11_wyqff"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyf7r"]
 texture = ExtResource("1_gqeaa")
@@ -88,15 +89,14 @@ centered = false
 modulate = Color(0.713726, 0.517647, 0.0784314, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.354688
-anchor_top = 0.246296
-anchor_right = 0.645312
-anchor_bottom = 0.753704
+anchor_left = 0.348958
+anchor_top = 0.293519
+anchor_right = 0.646875
+anchor_bottom = 0.577778
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_lyf7r")
-metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Panel" parent="Background2"]
 modulate = Color(0.411765, 0.113725, 0.12549, 1)
@@ -195,3 +195,8 @@ icon = SubResource("AtlasTexture_b5hft")
 script = ExtResource("5_cx4ok")
 
 [node name="LeafParticles" parent="." instance=ExtResource("2_5x8v3")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_wyqff")
+volume_db = 14.0
+autoplay = true

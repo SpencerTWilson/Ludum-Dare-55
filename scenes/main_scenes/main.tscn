@@ -1,39 +1,77 @@
-[gd_scene load_steps=11 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=18 format=3 uid="uid://coqt385pnthu7"]
 
+[ext_resource type="Texture2D" uid="uid://ccfs10efgau6d" path="res://assets/textures/Sky's/4301539348_8ab6133f3e_b.png" id="1_acm4s"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
 [ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot_hand.gd" id="2_blfti"]
 [ext_resource type="PackedScene" uid="uid://blid8q76f6ek8" path="res://scenes/main_scenes/cards/Card.tscn" id="2_neq0k"]
 [ext_resource type="Texture2D" uid="uid://dqktgdfagyowq" path="res://assets/textures/hanafuda/card_back.png" id="2_oj05l"]
 [ext_resource type="Script" path="res://scenes/main_scenes/Deck.gd" id="2_uxd76"]
+[ext_resource type="Texture2D" uid="uid://ccm8kmeesssvf" path="res://assets/textures/fantasy_border_ui/PNG/Panel/panel-005.png" id="2_w6qg6"]
 [ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_ktb85"]
 [ext_resource type="Script" path="res://scenes/main_scenes/play_card.gd" id="5_t5g20"]
-[ext_resource type="Texture2D" uid="uid://bxcssrgskjwrk" path="res://assets/textures/hanafuda/play_card.png" id="5_xd1ad"]
 [ext_resource type="Script" path="res://scenes/main_scenes/ScoreCorner.gd" id="9_tovc6"]
+[ext_resource type="Texture2D" uid="uid://cnfat2iq42rjb" path="res://assets/textures/kenney_foliage_sprites/PNG/Flat/sprite_0002 faded.png" id="10_dki0p"]
+[ext_resource type="Texture2D" uid="uid://cgf3t8std37gc" path="res://assets/textures/fantasy_border_ui/PNG/Panel/panel-004.png" id="10_x8hp8"]
+[ext_resource type="Texture2D" uid="uid://big8g08665q6m" path="res://assets/textures/icons/PNG/White/1x/import.png" id="11_kwyni"]
+[ext_resource type="AudioStream" uid="uid://deq58scdcq12c" path="res://assets/sounds/music/gam jam.wav" id="14_2krcg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bcc3"]
-bg_color = Color(0.262745, 0.0862745, 0.0901961, 1)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_05uri"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 37.705, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.2
+color = Color(0.282353, 0.611765, 0.611765, 1)
+hue_variation_max = 0.04
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuii7"]
+texture = ExtResource("2_w6qg6")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_70npu"]
+texture = ExtResource("10_x8hp8")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
 
 [node name="Main" type="Node2D"]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.87408, 1.87408)
+texture = ExtResource("1_acm4s")
+centered = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(959, 1010)
+amount = 253
+process_material = SubResource("ParticleProcessMaterial_05uri")
+texture = ExtResource("10_dki0p")
+lifetime = 600.0
+explosiveness = 1.0
+
 [node name="Panel" type="Panel" parent="."]
-offset_left = -1142.0
-offset_top = -926.0
-offset_right = 3119.0
-offset_bottom = 2150.0
+offset_left = 650.0
+offset_top = -1314.0
+offset_right = 1346.0
+offset_bottom = 491.0
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_5bcc3")
+theme_override_styles/panel = SubResource("StyleBoxTexture_nuii7")
 
 [node name="Hand" type="Node2D" parent="." groups=["card_zone"]]
 position = Vector2(969, 980)
 script = ExtResource("2_blfti")
 num_cards_allowed = 32
 
-[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("hand_slot", "collected_cards_slot")]
+[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("hand_slot")]
 position = Vector2(1735, 528)
 script = ExtResource("2_uxd76")
 table_slots = [NodePath("../Card Pool/CardSlot"), NodePath("../Card Pool/CardSlot2"), NodePath("../Card Pool/CardSlot3"), NodePath("../Card Pool/CardSlot4"), NodePath("../Card Pool/CardSlot5"), NodePath("../Card Pool/CardSlot6"), NodePath("../Card Pool/CardSlot7"), NodePath("../Card Pool/CardSlot8")]
 hand_slot = NodePath("../Hand")
-collected_cards_slot = NodePath("../CollectedCards/CardSlot")
 card_scene = ExtResource("2_neq0k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck"]
@@ -49,7 +87,6 @@ theme = ExtResource("3_ktb85")
 text = "End Season"
 
 [node name="CardSlot" parent="Deck" instance=ExtResource("2_2i3qn")]
-can_drop = false
 num_cards_allowed = 300
 
 [node name="PlayCard" type="Node2D" parent="." node_paths=PackedStringArray("collected_cards", "hand")]
@@ -61,21 +98,29 @@ hand = NodePath("../Hand")
 
 [node name="CardSlot" parent="PlayCard" instance=ExtResource("2_2i3qn")]
 position = Vector2(0, -1)
-lock_card = true
 
-[node name="Label" type="Label" parent="PlayCard"]
-offset_left = -56.0
-offset_top = 114.0
-offset_right = 57.0
-offset_bottom = 137.0
+[node name="Panel3" type="Panel" parent="PlayCard"]
+offset_left = -87.0
+offset_top = -117.0
+offset_right = 87.0
+offset_bottom = 119.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Play Card here"
-horizontal_alignment = 1
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_nuii7")
+
+[node name="Panel2" type="Panel" parent="PlayCard"]
+modulate = Color(0.294118, 0.294118, 0.294118, 1)
+offset_left = -71.0
+offset_top = -97.0
+offset_right = 71.0
+offset_bottom = 98.0
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_70npu")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayCard"]
-scale = Vector2(0.056, 0.056)
-texture = ExtResource("5_xd1ad")
+modulate = Color(0.384314, 0.384314, 0.384314, 1)
+texture = ExtResource("11_kwyni")
 
 [node name="CardManager" type="Node2D" parent="." groups=["card_manager"]]
 position = Vector2(979, 1083)
@@ -84,60 +129,38 @@ position = Vector2(979, 1083)
 
 [node name="CardSlot" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1199, 378)
-can_drop = false
-lock_card = true
 
 [node name="CardSlot2" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1049, 378)
-can_drop = false
-lock_card = true
 
 [node name="CardSlot3" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(899, 378)
-can_drop = false
-lock_card = true
 
 [node name="CardSlot4" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(749, 378)
-can_drop = false
-lock_card = true
 
 [node name="CardSlot5" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1199, 128)
-can_drop = false
-lock_card = true
 
 [node name="CardSlot6" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(1049, 128)
-can_drop = false
-lock_card = true
 
 [node name="CardSlot7" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(899, 128)
-can_drop = false
-lock_card = true
 
 [node name="CardSlot8" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(749, 128)
-can_drop = false
-lock_card = true
 
 [node name="CardSlot9" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(597, 376)
-can_drop = false
-lock_card = true
 
 [node name="CardSlot10" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(597, 126)
-can_drop = false
-lock_card = true
 
 [node name="CollectedCards" type="Node2D" parent="."]
 position = Vector2(40, 564)
 
 [node name="CardSlot" parent="CollectedCards" instance=ExtResource("2_2i3qn")]
-can_drop = false
-lock_card = true
 num_cards_allowed = 400
 
 [node name="ScoreCorner" type="Control" parent="."]
@@ -181,6 +204,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 value = 50.0
 fill_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_2krcg")
+volume_db = 14.0
+autoplay = true
 
 [connection signal="pressed" from="Deck/EndSeasonButton" to="Deck" method="_on_end_season_button_pressed"]
 [connection signal="slot_selected" from="PlayCard/CardSlot" to="PlayCard" method="_on_card_slot_slot_selected"]

@@ -81,7 +81,6 @@ func _next_round():
 	
 #TODO:
 #2. Make a Hanafuda Hand place that will calculate the hands you have
-#4. Make a score display
 #5. Make a hand guide, that can expand
 #7. Make a deamon manager
 #8. Make a deamon altar for satiating the deamons

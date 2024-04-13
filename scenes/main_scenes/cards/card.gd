@@ -18,10 +18,10 @@ var unselected_sound: AudioStream = preload("res://assets/sounds/kenney_casino_a
 var flipped: bool = false
 var flipping: bool = false
 
-@export var rest_point: Vector2
+@export var rest_slot: CardSlot
 
 func _ready():
-	rest_point = SlotManager.active_slots[0].position
+	SlotManager.get_closest_slot(self, true)._select(self)
 	front_texture = texture
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
@@ -47,7 +47,7 @@ func _physics_process(delta):
 			else:
 				texture = front_texture
 	else:
-		global_position = lerp(global_position, rest_point, 25 * delta)
+		global_position = lerp(global_position, rest_slot.get_card_pos(self), 25 * delta)
 		scale = lerp(scale, Vector2.ONE * unselected_scale, 25 * delta)
 
 func _input(event):
@@ -57,4 +57,5 @@ func _input(event):
 			AudioManager._play_clip(unselected_sound, "SFX")
 			var new_slot: CardSlot = SlotManager.get_closest_slot(self)
 			if new_slot != null:
-				rest_point = new_slot.position
+				rest_slot._remove_card(self)
+				new_slot._select(self)

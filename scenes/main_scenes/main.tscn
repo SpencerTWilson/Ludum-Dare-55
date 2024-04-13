@@ -1,18 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=8 format=3 uid="uid://coqt385pnthu7"]
 
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
+[ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot_hand.gd" id="2_blfti"]
 [ext_resource type="PackedScene" uid="uid://blid8q76f6ek8" path="res://scenes/main_scenes/cards/Card.tscn" id="2_neq0k"]
+[ext_resource type="Texture2D" uid="uid://dqktgdfagyowq" path="res://assets/textures/hanafuda/card_back.png" id="2_oj05l"]
+[ext_resource type="Script" path="res://scenes/main_scenes/Deck.gd" id="2_uxd76"]
+[ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_ktb85"]
+[ext_resource type="Texture2D" uid="uid://bxcssrgskjwrk" path="res://assets/textures/hanafuda/play_card.png" id="5_xd1ad"]
 
 [node name="Main" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+[node name="Hand" type="Node2D" parent="." groups=["card_zone"]]
+position = Vector2(969, 980)
+script = ExtResource("2_blfti")
+num_cards_allowed = 32
 
-[node name="CardSlot" parent="." instance=ExtResource("2_2i3qn")]
-position = Vector2(1552, 393)
+[node name="Deck" type="Node2D" parent="."]
+position = Vector2(1735, 528)
+script = ExtResource("2_uxd76")
 
-[node name="CardSlot2" parent="." instance=ExtResource("2_2i3qn")]
-position = Vector2(84, 1010)
+[node name="Sprite2D" type="Sprite2D" parent="Deck"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_oj05l")
 
-[node name="Card" parent="." instance=ExtResource("2_neq0k")]
-position = Vector2(1027, 764)
+[node name="Label" type="Label" parent="Deck"]
+offset_left = -42.0
+offset_top = 88.0
+offset_right = 41.0
+offset_bottom = 137.0
+theme = ExtResource("3_ktb85")
+text = "Deck"
+
+[node name="PlayCard" type="Node2D" parent="."]
+position = Vector2(971, 680)
+
+[node name="CardSlot" parent="PlayCard" instance=ExtResource("2_2i3qn")]
+position = Vector2(0, -1)
+num_cards_allowed = 2
+
+[node name="Label" type="Label" parent="PlayCard"]
+offset_left = -56.0
+offset_top = 114.0
+offset_right = 57.0
+offset_bottom = 137.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Play Card here"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayCard"]
+scale = Vector2(0.056, 0.056)
+texture = ExtResource("5_xd1ad")
+
+[node name="CardManager" type="Node2D" parent="." groups=["card_manager"]]
+position = Vector2(979, 1083)
+
+[node name="Card" parent="CardManager" instance=ExtResource("2_neq0k")]

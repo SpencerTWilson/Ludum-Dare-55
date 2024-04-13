@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://coqt385pnthu7"]
+
+[ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
+[ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot_hand.gd" id="2_blfti"]
+[ext_resource type="PackedScene" uid="uid://blid8q76f6ek8" path="res://scenes/main_scenes/cards/Card.tscn" id="2_neq0k"]
+[ext_resource type="Texture2D" uid="uid://bco28movlbgts" path="res://icon.svg" id="3_2pw6x"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CardSlot" parent="." instance=ExtResource("2_2i3qn")]
+position = Vector2(1552, 393)
+
+[node name="CardSlot2" parent="." instance=ExtResource("2_2i3qn")]
+position = Vector2(84, 1010)
+
+[node name="CardSlot3" parent="." instance=ExtResource("2_2i3qn")]
+position = Vector2(244, 162)
+
+[node name="Hand" type="Node2D" parent="." groups=["card_zone"]]
+position = Vector2(1022, 953)
+script = ExtResource("2_blfti")
+whitelisted_tag = null
+num_cards_allowed = 3
+max_dist_x = null
+
+[node name="Sprite2D" type="Sprite2D" parent="Hand"]
+texture = ExtResource("3_2pw6x")
+
+[node name="Card" parent="." instance=ExtResource("2_neq0k")]
+position = Vector2(1027, 764)
+tags = ["bacon"]
+
+[node name="Card2" parent="." instance=ExtResource("2_neq0k")]
+position = Vector2(430, 281)
+tags = ["bacon"]

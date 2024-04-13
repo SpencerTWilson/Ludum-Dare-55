@@ -19,7 +19,7 @@
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_05uri"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(1000, 37.705, 1)
+emission_box_extents = Vector3(2000, 37.705, 1)
 gravity = Vector3(0, 0, 0)
 scale_min = 0.1
 scale_max = 0.2
@@ -49,9 +49,25 @@ centered = false
 script = ExtResource("2_dqjgo")
 music_track = ExtResource("14_2krcg")
 
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-1918, 0)
+scale = Vector2(1.87408, 1.87408)
+texture = ExtResource("1_acm4s")
+centered = false
+script = ExtResource("2_dqjgo")
+music_track = ExtResource("14_2krcg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1918, 0)
+scale = Vector2(1.87408, 1.87408)
+texture = ExtResource("1_acm4s")
+centered = false
+script = ExtResource("2_dqjgo")
+music_track = ExtResource("14_2krcg")
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(959, 1010)
-amount = 253
+amount = 506
 process_material = SubResource("ParticleProcessMaterial_05uri")
 texture = ExtResource("10_dki0p")
 lifetime = 600.0
@@ -200,6 +216,15 @@ offset_right = 1961.0
 offset_bottom = 39.0
 script = ExtResource("9_tovc6")
 
+[node name="Panel4" type="Panel" parent="ScoreCorner"]
+offset_left = -491.0
+offset_top = -360.0
+offset_right = 1509.0
+offset_bottom = 240.0
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_nuii7")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="ScoreCorner"]
 layout_mode = 1
 anchors_preset = 14
@@ -216,6 +241,7 @@ grow_vertical = 2
 [node name="ScoreLabel" type="Label" parent="ScoreCorner/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_ktb85")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "100 ~ Total Petals"
 horizontal_alignment = 2
@@ -223,6 +249,7 @@ horizontal_alignment = 2
 [node name="QuotaLabel" type="Label" parent="ScoreCorner/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_ktb85")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "65000000 ~ Season Petals"
 horizontal_alignment = 2

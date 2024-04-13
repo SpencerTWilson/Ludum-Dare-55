@@ -13,6 +13,7 @@ func _ready():
 	current_music = AudioStreamPlayer.new()
 	current_music.bus = "Music"
 	add_child(current_music)
+	current_music.finished.connect(_continue_audio.bind(current_music))
 
 func _process(_delta):
 	for audio_player in audio_clips:

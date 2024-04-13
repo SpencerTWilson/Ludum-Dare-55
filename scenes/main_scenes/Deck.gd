@@ -7,6 +7,8 @@ extends Node2D
 
 @export var card_scene: PackedScene
 
+signal deck_empty
+
 var deck_of_cards: Array = []
 
 var shuffle_sound: AudioStream = preload("res://assets/sounds/kenney_casino_audio/Audio/cardFan2.ogg")
@@ -40,16 +42,19 @@ func _set_up_round():
 		await get_tree().create_timer(0.05).timeout
 
 func flip_card_to_slot(slot: CardSlot):
-	var new_card = card_scene.instantiate()
-	get_tree().get_nodes_in_group("card_manager")[0].add_child(new_card)
-	new_card.global_position = global_position
-	new_card.flipped = true
-	new_card.texture = new_card.back_texture
-	new_card.flipping = true
 	var new_card_type = deck_of_cards.pop_back()
-	new_card.front_texture = new_card_type["texture"]
-	new_card.tags = new_card_type["tags"]
-	slot._select(new_card)
+	if new_card_type != null:
+		var new_card = card_scene.instantiate()
+		get_tree().get_nodes_in_group("card_manager")[0].add_child(new_card)
+		new_card.global_position = global_position
+		new_card.flipped = true
+		new_card.texture = new_card.back_texture
+		new_card.flipping = true
+		new_card.front_texture = new_card_type["texture"]
+		new_card.tags = new_card_type["tags"]
+		slot._select(new_card)
+	else:
+		deck_empty.emit()
 
 func _next_round():
 	for card in hand_slot.cards:

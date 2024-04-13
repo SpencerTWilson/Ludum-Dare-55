@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://efqxnvcfxsq"]
+[gd_scene load_steps=21 format=3 uid="uid://efqxnvcfxsq"]
 
 [ext_resource type="Texture2D" uid="uid://b2o4k7i5ie3u0" path="res://assets/textures/fantasy_border_ui/PNG/Border/panel-border-025.png" id="1_gqeaa"]
 [ext_resource type="Script" path="res://scenes/main_scenes/sky.gd" id="1_k4kmx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c73lly5xjofum" path="res://scenes/main_scenes/leaf_particles.tscn" id="2_5x8v3"]
 [ext_resource type="Theme" uid="uid://dl56t6bt2n25f" path="res://ui/title.tres" id="2_x61j1"]
 [ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_bwyia"]
+[ext_resource type="Script" path="res://scenes/main_scenes/start_music.gd" id="4_aweca"]
 [ext_resource type="Script" path="res://scenes/change_scene.gd" id="4_gd4kd"]
 [ext_resource type="Texture2D" uid="uid://dmv2jxkv707u4" path="res://assets/textures/fantasy_border_ui/PNG/Border/panel-border-022.png" id="4_kobt7"]
 [ext_resource type="Script" path="res://scenes/quit_button.gd" id="5_cx4ok"]
@@ -97,6 +98,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_lyf7r")
+script = ExtResource("4_aweca")
+music_track = ExtResource("11_wyqff")
 
 [node name="Background" type="Panel" parent="Background2"]
 modulate = Color(0.411765, 0.113725, 0.12549, 1)
@@ -195,8 +198,3 @@ icon = SubResource("AtlasTexture_b5hft")
 script = ExtResource("5_cx4ok")
 
 [node name="LeafParticles" parent="." instance=ExtResource("2_5x8v3")]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_wyqff")
-volume_db = 14.0
-autoplay = true

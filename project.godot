@@ -20,11 +20,14 @@ config/icon="res://icon.svg"
 OptionsManager="*res://scenes/autoloads/Options/options_manager.gd"
 AudioManager="*res://scenes/autoloads/audio_manager.gd"
 SlotManager="*res://scenes/autoloads/slot_manager.gd"
+CardManager="*res://scenes/autoloads/card_manager.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [file_customization]
 

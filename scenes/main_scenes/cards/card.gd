@@ -20,10 +20,6 @@ var flipping: bool = false
 
 @export var rest_slot: CardSlot
 
-func _ready():
-	SlotManager.get_closest_slot(self, true)._select(self)
-	front_texture = texture
-
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("select") and !flipping:
 		selected = true
@@ -47,7 +43,7 @@ func _physics_process(delta):
 			else:
 				texture = front_texture
 	else:
-		global_position = lerp(global_position, rest_slot.get_card_pos(self), 25 * delta)
+		global_position = lerp(global_position, rest_slot.get_card_pos(self), 10 * delta)
 		scale = lerp(scale, Vector2.ONE * unselected_scale, 25 * delta)
 
 func _input(event):

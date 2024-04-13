@@ -3,6 +3,7 @@ class_name CardSlot
 
 signal slot_selected(card)
 
+@export var can_drop: bool = true
 @export var lock_card: bool = false
 @export var whitelisted_tag: String = ""
 @export var num_cards_allowed: int = 1

@@ -42,7 +42,6 @@ func _set_up_round():
 func flip_card_to_slot(slot: CardSlot):
 	var new_card = card_scene.instantiate()
 	get_tree().get_nodes_in_group("card_manager")[0].add_child(new_card)
-	slot._select(new_card)
 	new_card.global_position = global_position
 	new_card.flipped = true
 	new_card.texture = new_card.back_texture
@@ -50,6 +49,7 @@ func flip_card_to_slot(slot: CardSlot):
 	var new_card_type = deck_of_cards.pop_back()
 	new_card.front_texture = new_card_type["texture"]
 	new_card.tags = new_card_type["tags"]
+	slot._select(new_card)
 
 func _next_round():
 	for card in hand_slot.cards:

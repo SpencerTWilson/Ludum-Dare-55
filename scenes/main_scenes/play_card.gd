@@ -17,13 +17,16 @@ func _on_card_slot_slot_selected(card):
 		if slot.cards.size() > 0:
 			if slot.cards[0].tags.has(CardManager.get_month(card)):
 				$CardSlot._remove_card(card)
+				await get_tree().create_timer(0.5).timeout
 				collected_cards._select(card)
 				var collected_card = slot.cards[0]
 				slot._remove_card(collected_card)
 				collected_cards._select(collected_card)
 				AudioManager._play_clip(collect_sound, "SFX")
+				$"../Deck".flip_card_to_slot($CardSlot)
 				break
 	
 	if $CardSlot.cards.size() > 0:
 		$CardSlot._remove_card(card)
 		hand._select(card)
+	

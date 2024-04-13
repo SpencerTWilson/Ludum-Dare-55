@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxamfy5hidwtk"]
+[gd_scene load_steps=6 format=3 uid="uid://cxamfy5hidwtk"]
 
 [ext_resource type="StyleBox" uid="uid://lgcbwwtq7v8y" path="res://assets/textures/fantasy_border_ui/PNG/Panel/panel_025.tres" id="1_17kcj"]
+[ext_resource type="PackedScene" uid="uid://c73lly5xjofum" path="res://scenes/main_scenes/leaf_particles.tscn" id="2_5q74c"]
 [ext_resource type="Theme" uid="uid://dl56t6bt2n25f" path="res://ui/title.tres" id="2_ds1i4"]
 [ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_4fgbm"]
 [ext_resource type="Script" path="res://scenes/change_scene.gd" id="4_p8whp"]
@@ -23,6 +24,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = ExtResource("1_17kcj")
+
+[node name="LeafParticles" parent="." instance=ExtResource("2_5q74c")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

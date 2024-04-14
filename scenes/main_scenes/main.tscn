@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=16 format=3 uid="uid://coqt385pnthu7"]
 
-[ext_resource type="Texture2D" uid="uid://ccfs10efgau6d" path="res://assets/textures/Sky's/4301539348_8ab6133f3e_b.png" id="1_acm4s"]
+[ext_resource type="PackedScene" uid="uid://bvqybkw7y0cq1" path="res://season.tscn" id="1_vkjov"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
 [ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot_hand.gd" id="2_blfti"]
-[ext_resource type="Script" path="res://scenes/main_scenes/start_music.gd" id="2_dqjgo"]
 [ext_resource type="PackedScene" uid="uid://blid8q76f6ek8" path="res://scenes/main_scenes/cards/Card.tscn" id="2_neq0k"]
 [ext_resource type="Texture2D" uid="uid://dqktgdfagyowq" path="res://assets/textures/hanafuda/card_back.png" id="2_oj05l"]
 [ext_resource type="Script" path="res://scenes/main_scenes/Deck.gd" id="2_uxd76"]
@@ -11,21 +10,9 @@
 [ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_ktb85"]
 [ext_resource type="Script" path="res://scenes/main_scenes/play_card.gd" id="5_t5g20"]
 [ext_resource type="Script" path="res://scenes/main_scenes/ScoreCorner.gd" id="9_tovc6"]
-[ext_resource type="Texture2D" uid="uid://cnfat2iq42rjb" path="res://assets/textures/kenney_foliage_sprites/PNG/Flat/sprite_0002 faded.png" id="10_dki0p"]
 [ext_resource type="Texture2D" uid="uid://cgf3t8std37gc" path="res://assets/textures/fantasy_border_ui/PNG/Panel/panel-004.png" id="10_x8hp8"]
 [ext_resource type="Texture2D" uid="uid://big8g08665q6m" path="res://assets/textures/icons/PNG/White/1x/import.png" id="11_kwyni"]
-[ext_resource type="AudioStream" uid="uid://deq58scdcq12c" path="res://assets/sounds/music/gam jam.wav" id="14_2krcg"]
 [ext_resource type="Script" path="res://scenes/main_scenes/ScoreCalculator.gd" id="15_hw7f0"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_05uri"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(2000, 37.705, 1)
-gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.2
-color = Color(0.282353, 0.611765, 0.611765, 1)
-hue_variation_max = 0.04
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuii7"]
 texture = ExtResource("2_w6qg6")
@@ -43,36 +30,7 @@ texture_margin_bottom = 20.0
 
 [node name="Main" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.87408, 1.87408)
-texture = ExtResource("1_acm4s")
-centered = false
-script = ExtResource("2_dqjgo")
-music_track = ExtResource("14_2krcg")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(-1918, 0)
-scale = Vector2(1.87408, 1.87408)
-texture = ExtResource("1_acm4s")
-centered = false
-script = ExtResource("2_dqjgo")
-music_track = ExtResource("14_2krcg")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(1918, 0)
-scale = Vector2(1.87408, 1.87408)
-texture = ExtResource("1_acm4s")
-centered = false
-script = ExtResource("2_dqjgo")
-music_track = ExtResource("14_2krcg")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(959, 1004)
-amount = 506
-process_material = SubResource("ParticleProcessMaterial_05uri")
-texture = ExtResource("10_dki0p")
-lifetime = 600.0
-explosiveness = 1.0
+[node name="Season" parent="." instance=ExtResource("1_vkjov")]
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 650.0
@@ -256,6 +214,7 @@ offset_bottom = 39.0
 script = ExtResource("9_tovc6")
 
 [node name="Panel4" type="Panel" parent="ScoreCorner"]
+layout_mode = 0
 offset_left = -491.0
 offset_top = -360.0
 offset_right = 1509.0

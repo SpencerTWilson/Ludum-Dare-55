@@ -124,7 +124,6 @@ hand = NodePath("../Hand")
 
 [node name="CardSlot" parent="PlayCard" instance=ExtResource("2_2i3qn")]
 position = Vector2(0, -1)
-lock_card = true
 
 [node name="Panel3" type="Panel" parent="PlayCard"]
 offset_left = -87.0

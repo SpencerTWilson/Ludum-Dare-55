@@ -86,8 +86,32 @@ func _next_round():
 	$CardSlot.cards.clear()
 	
 	DemonManager.season_count += 1
+	DemonManager.new_season.emit()
 	
 	_set_up_round()
+	
+func _add_cards(cards_to_add: Array):
+	for card_type in cards_to_add:
+		var new_card = card_scene.instantiate()
+		get_tree().get_nodes_in_group("card_manager")[0].add_child(new_card)
+		new_card.global_position = $NewCardSpawnPos.global_position
+		new_card.flipped = true
+		new_card.texture = new_card.back_texture
+		new_card.flipping = true
+		new_card.front_texture = card_type["texture"]
+		new_card.tags = card_type["tags"]
+		$CardSlot._select(new_card)
+		
+		await get_tree().create_timer(0.05).timeout
+	
+	await get_tree().create_timer(0.5).timeout
+	for card in $CardSlot.cards:
+		deck_of_cards.append({"texture": card.front_texture, "tags": card.tags})
+		card.queue_free()
+	$CardSlot.cards.clear()
+	
+	AudioManager._play_clip(shuffle_sound_2, "SFX")
+	deck_of_cards.shuffle()
 	
 #TODO:
 #2. Make a Hanafuda Hand place that will calculate the hands you have

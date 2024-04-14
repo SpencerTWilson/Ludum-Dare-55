@@ -17,6 +17,7 @@ func _on_card_slot_slot_selected(card):
 		if slot.cards.size() > 0:
 			if slot.cards[0].tags.has(CardManager.get_month(card)):
 				$CardSlot._remove_card(card)
+				card.locked = true
 				await get_tree().create_timer(0.5).timeout
 				collected_cards._select(card)
 				var collected_card = slot.cards[0]

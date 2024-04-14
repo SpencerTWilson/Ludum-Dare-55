@@ -26,7 +26,7 @@ func _ready():
 			deck_of_cards.append(CardManager.card_types[card_type])
 	
 	AudioManager._play_clip(shuffle_sound, "SFX")
-	
+	$EndSeasonButton.disabled = true
 	_set_up_round()
 	
 func _set_up_round():
@@ -40,6 +40,7 @@ func _set_up_round():
 	for index in range(8):
 		flip_card_to_slot(hand_slot)
 		await get_tree().create_timer(0.05).timeout
+	$EndSeasonButton.disabled = false
 
 func flip_card_to_slot(slot: CardSlot):
 	var new_card_type = deck_of_cards.pop_back()
@@ -57,12 +58,13 @@ func flip_card_to_slot(slot: CardSlot):
 		deck_empty.emit()
 
 func _next_round():
+	$EndSeasonButton.disabled = true
 	DemonManager.total_petals += DemonManager.season_petals
 	DemonManager.season_petals = 0
-	DemonManager.required_petals_season = pow((DemonManager.season_count), 2) * 2.2
 	
 	if DemonManager.total_petals < floor(DemonManager.required_petals_season):
 		$"../ScoreCorner2".visible = true
+		$"../ScoreCorner2"._update_gameover_scores()
 		DemonManager.season_count = 0
 
 		DemonManager.season_petals = 0
@@ -76,7 +78,12 @@ func _next_round():
 		DemonManager.special_summon = false
 		DemonManager.bird_ribbon_gold = false
 		DemonManager.summon_animals = false
+		
+		SlotManager.active_slots.clear()
 		get_tree().paused = true
+		return
+	
+	DemonManager.required_petals_season = pow((DemonManager.season_count), 2) * 2.2
 	
 	var emptied_board: bool = true
 	for slot in table_slots:

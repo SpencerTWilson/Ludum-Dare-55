@@ -52,12 +52,14 @@ func flip_card_to_slot(slot: CardSlot):
 		new_card.flipping = true
 		new_card.front_texture = new_card_type["texture"]
 		new_card.tags = new_card_type["tags"]
-		slot._select(new_card)
+		slot._select(new_card, true)
 	else:
 		deck_empty.emit()
 
 func _next_round():
 	DemonManager.total_petals += DemonManager.season_petals
+	DemonManager.last_required_petals = DemonManager.required_petals_season
+	DemonManager.required_petals_season = pow((DemonManager.season_count), 2) * 2.2
 	
 	var emptied_board: bool = true
 	for slot in table_slots:
@@ -94,6 +96,7 @@ func _next_round():
 	
 	DemonManager.season_count += 1
 	DemonManager.new_season.emit()
+	DemonManager.scores_updated.emit()
 	
 	_set_up_round()
 	

@@ -1,7 +1,7 @@
 extends Node2D
 class_name CardSlot
 
-signal slot_selected(card)
+signal slot_selected(card, from_deck)
 
 @export var can_drop: bool = true
 @export var lock_card: bool = false
@@ -12,12 +12,12 @@ var cards: Array = []
 func _ready():
 	SlotManager.active_slots.append(self)
 
-func _select(card: Card):
+func _select(card: Card, from_deck: bool = false):
 	cards.append(card)
 	card.rest_slot = self
 	if lock_card:
 		card.locked = true
-	slot_selected.emit(card)
+	slot_selected.emit(card, from_deck)
 
 func get_card_pos(_card: Card):
 	return global_position

@@ -12,7 +12,7 @@ func _new_season():
 	can_summon_ribbon = true
 	can_summon_animal = true
 
-func _on_card_slot_slot_selected(_card):
+func _on_card_slot_slot_selected(_card, from_deck):
 	score = 0
 	
 	#PLAINS / SPECIALS

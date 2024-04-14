@@ -12,7 +12,7 @@ func _ready():
 		table_slots[i] = get_node(slot)
 		i += 1
 
-func _on_card_slot_slot_selected(card):
+func _on_card_slot_slot_selected(card, from_deck):
 	for slot in table_slots:
 		if slot.cards.size() > 0:
 			if slot.cards[0].tags.has(CardManager.get_month(card)):
@@ -29,5 +29,10 @@ func _on_card_slot_slot_selected(card):
 	
 	if $CardSlot.cards.size() > 0:
 		$CardSlot._remove_card(card)
+		if from_deck:
+			for slot in table_slots:
+				if slot.cards.size() < 1:
+					slot._select(card)
+					return
 		hand._select(card)
 	

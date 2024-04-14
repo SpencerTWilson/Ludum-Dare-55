@@ -1,4 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://ceqt81jsw2vwa"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ceqt81jsw2vwa"]
+
+[ext_resource type="FontFile" uid="uid://c7yty5i6v7je6" path="res://ui/Noto_Sans_JP/static/NotoSansJP-Bold.ttf" id="1_3qif5"]
 
 [resource]
+default_font = ExtResource("1_3qif5")
 default_font_size = 35

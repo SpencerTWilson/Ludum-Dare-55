@@ -6,4 +6,4 @@ func _ready():
 	
 func _update_displays():
 	$VBoxContainer/ScoreLabel.text = "%d ~ Total Petals" % (DemonManager.total_petals + DemonManager.season_petals)
-	$VBoxContainer/QuotaLabel.text = "%d ~ Season Petals" % DemonManager.required_petals_season
+	$VBoxContainer/QuotaLabel.text = "%d ~ Required Petals" % DemonManager.required_petals_season

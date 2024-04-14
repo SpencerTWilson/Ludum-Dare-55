@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bvqybkw7y0cq1"]
+[gd_scene load_steps=21 format=3 uid="uid://bq8b7rfnd0pxo"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/sky.gd" id="1_bqxb5"]
 [ext_resource type="Texture2D" uid="uid://bj3rqwc84idoj" path="res://assets/textures/Sky's/free-photo-of-clouds-on-a-pink-sky.png" id="2_frpqy"]

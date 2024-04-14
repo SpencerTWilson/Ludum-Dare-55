@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://coqt385pnthu7"]
 
-[ext_resource type="PackedScene" path="res://season.tscn" id="1_vkjov"]
+[ext_resource type="PackedScene" uid="uid://bq8b7rfnd0pxo" path="res://season.tscn" id="1_vkjov"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
 [ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot_hand.gd" id="2_blfti"]
 [ext_resource type="PackedScene" uid="uid://blid8q76f6ek8" path="res://scenes/main_scenes/cards/Card.tscn" id="2_neq0k"]

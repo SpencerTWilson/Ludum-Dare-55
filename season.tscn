@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bvqybkw7y0cq1"]
+[gd_scene load_steps=37 format=3 uid="uid://bvqybkw7y0cq1"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/sky.gd" id="1_bqxb5"]
 [ext_resource type="Texture2D" uid="uid://bj3rqwc84idoj" path="res://assets/textures/Sky's/free-photo-of-clouds-on-a-pink-sky.png" id="2_frpqy"]
@@ -59,7 +59,7 @@ color = Color(0.329412, 0.584314, 0.658824, 1)
 color_initial_ramp = SubResource("GradientTexture1D_hsxad")
 
 [sub_resource type="Gradient" id="Gradient_xcptr"]
-colors = PackedColorArray(0.514382, 0.66001, 1, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.955691, 0.404313, 0.874896, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_moev0"]
 gradient = SubResource("Gradient_xcptr")
@@ -86,7 +86,7 @@ gravity = Vector3(141.205, 238.42, 0)
 radial_accel_max = 10.35
 scale_min = 0.02
 scale_max = 0.03
-color = Color(0.835294, 0.890196, 0.976471, 1)
+color = Color(0.968627, 0.843137, 0.921569, 1)
 color_initial_ramp = SubResource("GradientTexture1D_moev0")
 turbulence_noise_strength = 7.32
 turbulence_noise_scale = 2.368
@@ -117,8 +117,76 @@ gravity = Vector3(141.205, 238.42, 0)
 radial_accel_max = 10.35
 scale_min = 0.02
 scale_max = 0.03
-color = Color(0.607843, 0.737255, 0.941176, 1)
+color = Color(0.698039, 0.309804, 0.713726, 1)
 color_initial_ramp = SubResource("GradientTexture1D_7hx2e")
+turbulence_noise_strength = 7.32
+turbulence_noise_scale = 2.368
+turbulence_noise_speed = Vector3(0.895, 0, 7.4)
+
+[sub_resource type="Gradient" id="Gradient_lnwk4"]
+colors = PackedColorArray(0.514382, 0.66001, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nnwjr"]
+gradient = SubResource("Gradient_lnwk4")
+
+[sub_resource type="Curve" id="Curve_gpwhx"]
+_data = [Vector2(0, 0), 0.0, -0.0246024, 0, 0, Vector2(0.366667, 0.142857), 1.03022, 1.03022, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_wjudj"]
+curve_x = SubResource("Curve_gpwhx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_klh0l"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(480, -100, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1080, 0, 0)
+angle_max = 180.0
+initial_velocity_min = -50.0
+initial_velocity_max = 400.0
+directional_velocity_min = 266.97
+directional_velocity_max = 266.97
+directional_velocity_curve = SubResource("CurveXYZTexture_wjudj")
+gravity = Vector3(141.205, 238.42, 0)
+radial_accel_max = 10.35
+scale_min = 0.02
+scale_max = 0.03
+color = Color(0.835294, 0.890196, 0.976471, 1)
+color_initial_ramp = SubResource("GradientTexture1D_nnwjr")
+turbulence_noise_strength = 7.32
+turbulence_noise_scale = 2.368
+turbulence_noise_speed = Vector3(0.895, 0, 7.4)
+
+[sub_resource type="Gradient" id="Gradient_mb7pj"]
+colors = PackedColorArray(0.514382, 0.66001, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0kbpb"]
+gradient = SubResource("Gradient_mb7pj")
+
+[sub_resource type="Curve" id="Curve_q50ra"]
+_data = [Vector2(0, 0), 0.0, -0.0246024, 0, 0, Vector2(0.366667, 0.142857), 1.03022, 1.03022, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_37dbj"]
+curve_x = SubResource("Curve_q50ra")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_123k5"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(480, -100, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1080, 0, 0)
+angle_max = 180.0
+initial_velocity_min = -50.0
+initial_velocity_max = 400.0
+directional_velocity_min = 266.97
+directional_velocity_max = 266.97
+directional_velocity_curve = SubResource("CurveXYZTexture_37dbj")
+gravity = Vector3(141.205, 238.42, 0)
+radial_accel_max = 10.35
+scale_min = 0.02
+scale_max = 0.03
+color = Color(0.607843, 0.737255, 0.941176, 1)
+color_initial_ramp = SubResource("GradientTexture1D_0kbpb")
 turbulence_noise_strength = 7.32
 turbulence_noise_scale = 2.368
 turbulence_noise_speed = Vector3(0.895, 0, 7.4)
@@ -195,7 +263,6 @@ lifetime = 600.0
 explosiveness = 1.0
 
 [node name="spring" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -236,6 +303,7 @@ texture = ExtResource("6_k2ou3")
 lifetime = 20.25
 
 [node name="winter" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -243,7 +311,7 @@ offset_bottom = 40.0
 [node name="LeafParticles" type="GPUParticles2D" parent="winter"]
 z_index = 2
 amount = 80
-process_material = SubResource("ParticleProcessMaterial_ldi0o")
+process_material = SubResource("ParticleProcessMaterial_klh0l")
 texture = ExtResource("10_287y5")
 lifetime = 5.0
 preprocess = 5.75
@@ -254,6 +322,6 @@ randomness = 1.0
 z_index = -3
 z_as_relative = false
 amount = 150
-process_material = SubResource("ParticleProcessMaterial_gxu11")
+process_material = SubResource("ParticleProcessMaterial_123k5")
 texture = ExtResource("10_287y5")
 lifetime = 20.25

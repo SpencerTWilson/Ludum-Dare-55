@@ -59,6 +59,13 @@ func flip_card_to_slot(slot: CardSlot):
 func _next_round():
 	DemonManager.total_petals += DemonManager.season_petals
 	
+	var emptied_board: bool = true
+	for slot in table_slots:
+		if slot.cards.size() > 0:
+			emptied_board = false
+	if emptied_board:
+		DemonManager._add_new_gold()
+	
 	for card in hand_slot.cards:
 		$CardSlot._select(card)
 	hand_slot.cards.clear()
@@ -114,7 +121,6 @@ func _add_cards(cards_to_add: Array):
 	deck_of_cards.shuffle()
 	
 #TODO:
-#2. Make a Hanafuda Hand place that will calculate the hands you have
 #5. Make a hand guide, that can expand
 #7. Make a deamon manager
 #8. Make a deamon altar for satiating the deamons

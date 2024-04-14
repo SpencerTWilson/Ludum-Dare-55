@@ -15,7 +15,7 @@ var card_types: Dictionary = {
 	},
 	"august_birds": {
 		"texture": preload("res://assets/textures/hanafuda/august_birds.png"),
-		"tags": ["august","bird","animal"],
+		"tags": ["august","bird","animal","three_bird"],
 	},
 	"august_gold": {
 		"texture": preload("res://assets/textures/hanafuda/august_gold.png"),
@@ -135,7 +135,7 @@ var card_types: Dictionary = {
 	},
 	"october_ribbon": {
 		"texture": preload("res://assets/textures/hanafuda/october_ribbon.png"),
-		"tags": ["november","ribbon","blue_ribbon"],
+		"tags": ["october","ribbon","blue_ribbon"],
 	},
 	"september_animal": {
 		"texture": preload("res://assets/textures/hanafuda/september_animal.png"),

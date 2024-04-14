@@ -111,44 +111,45 @@ modulate = Color(0.384314, 0.384314, 0.384314, 1)
 texture = ExtResource("11_kwyni")
 
 [node name="Card Pool" type="Node2D" parent="."]
+position = Vector2(730, 414)
 
 [node name="CardSlot" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(1199, 378)
+position = Vector2(469, -38)
 can_drop = false
 lock_card = true
 
 [node name="CardSlot2" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(1049, 378)
+position = Vector2(319, -38)
 can_drop = false
 lock_card = true
 
 [node name="CardSlot3" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(899, 378)
+position = Vector2(169, -38)
 can_drop = false
 lock_card = true
 
 [node name="CardSlot4" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(749, 378)
+position = Vector2(19, -38)
 can_drop = false
 lock_card = true
 
 [node name="CardSlot5" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(1199, 128)
+position = Vector2(469, -288)
 can_drop = false
 lock_card = true
 
 [node name="CardSlot6" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(1049, 128)
+position = Vector2(319, -288)
 can_drop = false
 lock_card = true
 
 [node name="CardSlot7" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(899, 128)
+position = Vector2(169, -288)
 can_drop = false
 lock_card = true
 
 [node name="CardSlot8" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(749, 128)
+position = Vector2(19, -288)
 can_drop = false
 lock_card = true
 

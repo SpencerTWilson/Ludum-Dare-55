@@ -110,6 +110,7 @@ turbulence_noise_scale = 2.368
 turbulence_noise_speed = Vector3(0.895, 0, 7.4)
 
 [node name="Season" type="Control" node_paths=PackedStringArray("texture1", "texture2")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_left = -4.0

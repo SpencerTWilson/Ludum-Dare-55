@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bq8b7rfnd0pxo"]
+[gd_scene load_steps=27 format=3 uid="uid://bvqybkw7y0cq1"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/sky.gd" id="1_bqxb5"]
 [ext_resource type="Texture2D" uid="uid://bj3rqwc84idoj" path="res://assets/textures/Sky's/free-photo-of-clouds-on-a-pink-sky.png" id="2_frpqy"]
@@ -7,13 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://c73lly5xjofum" path="res://scenes/main_scenes/leaf_particles.tscn" id="3_jf1u8"]
 [ext_resource type="Texture2D" uid="uid://dy82t7uggwdes" path="res://assets/textures/kenney_foliage_sprites/PNG/Flat/sprite_0029.png" id="4_bo35d"]
 [ext_resource type="Texture2D" uid="uid://cnfat2iq42rjb" path="res://assets/textures/kenney_foliage_sprites/PNG/Flat/sprite_0002 faded.png" id="5_jgx1s"]
+[ext_resource type="Texture2D" uid="uid://c0tow83tlvgaa" path="res://assets/textures/Sky's/arctic-aurora-aurora-borealis-beautiful-preview.png" id="5_w7llm"]
 [ext_resource type="Texture2D" uid="uid://u58pgsg2uleb" path="res://assets/textures/kenney_foliage_sprites/PNG/Flat/sprite_0030.png" id="6_k2ou3"]
+[ext_resource type="Texture2D" uid="uid://d0qn7l5pwybk8" path="res://assets/textures/Sky's/snowflake.png" id="10_287y5"]
 
-[sub_resource type="Gradient" id="Gradient_fptpr"]
-colors = PackedColorArray(0.263508, 0.496652, 0.731386, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_np3k2"]
+colors = PackedColorArray(0.802144, 0.817736, 0.937552, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6655t"]
-gradient = SubResource("Gradient_fptpr")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n6dhl"]
+gradient = SubResource("Gradient_np3k2")
 
 [sub_resource type="Curve" id="Curve_vga5a"]
 min_value = -1.0
@@ -38,10 +40,13 @@ directional_velocity_curve = SubResource("CurveXYZTexture_k3nu6")
 gravity = Vector3(0, 0, 0)
 scale_min = 0.05
 scale_max = 0.1
-color = Color(0.301961, 0.643137, 0.643137, 1)
-color_initial_ramp = SubResource("GradientTexture1D_6655t")
+color = Color(0.266667, 0.498039, 0.560784, 1)
+color_initial_ramp = SubResource("GradientTexture1D_n6dhl")
 turbulence_initial_displacement_min = 73.7
 turbulence_initial_displacement_max = 73.7
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hsxad"]
+gradient = SubResource("Gradient_np3k2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nx7iu"]
 particle_flag_disable_z = true
@@ -50,8 +55,14 @@ emission_box_extents = Vector3(2000, 37.705, 1)
 gravity = Vector3(0, 0, 0)
 scale_min = 0.1
 scale_max = 0.2
-color = Color(0.282353, 0.611765, 0.611765, 1)
-hue_variation_max = 0.04
+color = Color(0.329412, 0.584314, 0.658824, 1)
+color_initial_ramp = SubResource("GradientTexture1D_hsxad")
+
+[sub_resource type="Gradient" id="Gradient_xcptr"]
+colors = PackedColorArray(0.514382, 0.66001, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_moev0"]
+gradient = SubResource("Gradient_xcptr")
 
 [sub_resource type="Curve" id="Curve_yhasm"]
 _data = [Vector2(0, 0), 0.0, -0.0246024, 0, 0, Vector2(0.366667, 0.142857), 1.03022, 1.03022, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
@@ -73,13 +84,16 @@ directional_velocity_max = 266.97
 directional_velocity_curve = SubResource("CurveXYZTexture_olpuu")
 gravity = Vector3(141.205, 238.42, 0)
 radial_accel_max = 10.35
-scale_min = 0.04
-scale_max = 0.04
-color = Color(0.945098, 0.85098, 0.94902, 1)
-hue_variation_max = 0.08
+scale_min = 0.02
+scale_max = 0.03
+color = Color(0.835294, 0.890196, 0.976471, 1)
+color_initial_ramp = SubResource("GradientTexture1D_moev0")
 turbulence_noise_strength = 7.32
 turbulence_noise_scale = 2.368
 turbulence_noise_speed = Vector3(0.895, 0, 7.4)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7hx2e"]
+gradient = SubResource("Gradient_xcptr")
 
 [sub_resource type="Curve" id="Curve_7gaoe"]
 _data = [Vector2(0, 0), 0.0, -0.0246024, 0, 0, Vector2(0.366667, 0.142857), 1.03022, 1.03022, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
@@ -101,15 +115,15 @@ directional_velocity_max = 266.97
 directional_velocity_curve = SubResource("CurveXYZTexture_q8hll")
 gravity = Vector3(141.205, 238.42, 0)
 radial_accel_max = 10.35
-scale_min = 0.04
-scale_max = 0.04
-color = Color(0.623529, 0.552941, 0.631373, 1)
-hue_variation_max = 0.08
+scale_min = 0.02
+scale_max = 0.03
+color = Color(0.607843, 0.737255, 0.941176, 1)
+color_initial_ramp = SubResource("GradientTexture1D_7hx2e")
 turbulence_noise_strength = 7.32
 turbulence_noise_scale = 2.368
 turbulence_noise_speed = Vector3(0.895, 0, 7.4)
 
-[node name="Season" type="Control" node_paths=PackedStringArray("texture1", "texture2")]
+[node name="Season" type="Control" node_paths=PackedStringArray("texture1", "texture2", "spring", "summer", "fall", "winter")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
@@ -119,17 +133,21 @@ offset_bottom = 40.0
 script = ExtResource("1_bqxb5")
 texture1 = NodePath("Sprite2D")
 texture2 = NodePath("Sprite2D2")
-spring = ExtResource("2_frpqy")
-summer = ExtResource("3_2mqj3")
-fall = ExtResource("2_vowfj")
-winter = ExtResource("3_2mqj3")
+spring = NodePath("spring")
+summer = NodePath("summer")
+fall = NodePath("fall")
+winter = NodePath("winter")
+spring_tex = ExtResource("2_frpqy")
+summer_tex = ExtResource("3_2mqj3")
+fall_tex = ExtResource("2_vowfj")
+winter_tex = ExtResource("5_w7llm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.705882, 0.705882, 0.839216, 1)
 z_index = -3
 position = Vector2(0, -114)
 scale = Vector2(1.87538, 1.87538)
-texture = ExtResource("2_frpqy")
+texture = ExtResource("5_w7llm")
 centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
@@ -137,7 +155,7 @@ modulate = Color(0.705882, 0.705882, 0.839216, 1)
 z_index = -3
 position = Vector2(1919, -114)
 scale = Vector2(1.87538, 1.87538)
-texture = ExtResource("2_frpqy")
+texture = ExtResource("5_w7llm")
 centered = false
 
 [node name="fall" type="Control" parent="."]
@@ -177,6 +195,7 @@ lifetime = 600.0
 explosiveness = 1.0
 
 [node name="spring" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -220,3 +239,21 @@ lifetime = 20.25
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="LeafParticles" type="GPUParticles2D" parent="winter"]
+z_index = 2
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_ldi0o")
+texture = ExtResource("10_287y5")
+lifetime = 5.0
+preprocess = 5.75
+explosiveness = 0.06
+randomness = 1.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="winter/LeafParticles"]
+z_index = -3
+z_as_relative = false
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_gxu11")
+texture = ExtResource("10_287y5")
+lifetime = 20.25

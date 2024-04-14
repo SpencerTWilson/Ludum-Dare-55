@@ -1,3 +1,18 @@
 # Godot 4+ specific ignores
 .godot/
 builds/akuma_no_hanabira_v01.zip
+builds/build.zip
+builds/build/build 0.1.apple-touch-icon.png
+builds/build/build 0.1.apple-touch-icon.png.import
+builds/build/build 0.1.audio.worklet.js
+builds/build/build 0.1.icon.png
+builds/build/build 0.1.icon.png.import
+builds/build/build 0.1.js
+builds/build/build 0.1.pck
+builds/build/build 0.1.png
+builds/build/build 0.1.png.import
+builds/build/build 0.1.wasm
+builds/build/build 0.1.worker.js
+builds/build/index.html
+builds/windows/akuma_no_hanabira.exe
+builds/windows/akuma_no_hanabira.pck

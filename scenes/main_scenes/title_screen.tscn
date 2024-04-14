@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://efqxnvcfxsq"]
 
-[ext_resource type="PackedScene" path="res://season.tscn" id="1_2brub"]
+[ext_resource type="PackedScene" uid="uid://bq8b7rfnd0pxo" path="res://season.tscn" id="1_2brub"]
 [ext_resource type="Texture2D" uid="uid://b2o4k7i5ie3u0" path="res://assets/textures/fantasy_border_ui/PNG/Border/panel-border-025.png" id="1_gqeaa"]
 [ext_resource type="Theme" uid="uid://dl56t6bt2n25f" path="res://ui/title.tres" id="2_x61j1"]
 [ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_bwyia"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=22 format=3 uid="uid://coqt385pnthu7"]
 
 [ext_resource type="Texture2D" uid="uid://ccfs10efgau6d" path="res://assets/textures/Sky's/4301539348_8ab6133f3e_b.png" id="1_acm4s"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://big8g08665q6m" path="res://assets/textures/icons/PNG/White/1x/import.png" id="11_kwyni"]
 [ext_resource type="AudioStream" uid="uid://deq58scdcq12c" path="res://assets/sounds/music/gam jam.wav" id="14_2krcg"]
 [ext_resource type="Script" path="res://scenes/main_scenes/ScoreCalculator.gd" id="15_hw7f0"]
+[ext_resource type="Script" path="res://scenes/change_scene.gd" id="17_44ob8"]
+[ext_resource type="Script" path="res://scenes/quit_button.gd" id="18_itphs"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_05uri"]
 particle_flag_disable_z = true
@@ -288,15 +290,93 @@ horizontal_alignment = 2
 [node name="QuotaLabel" type="Label" parent="ScoreCorner/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_ktb85")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.796078, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "65000000 ~ Season Petals"
 horizontal_alignment = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="ScoreCorner/VBoxContainer"]
+[node name="ScoreCorner2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 741.0
+offset_top = 665.0
+offset_right = 781.0
+offset_bottom = 705.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("9_tovc6")
+
+[node name="Panel" type="Panel" parent="ScoreCorner2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1643.0
+offset_top = -1855.0
+offset_right = 2317.0
+offset_bottom = 2105.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel4" type="Panel" parent="ScoreCorner2"]
+modulate = Color(0.180392, 0, 0, 1)
+offset_left = -102.0
+offset_top = -360.0
+offset_right = 598.0
+offset_bottom = 240.0
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_nuii7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScoreCorner2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 59.0
+offset_top = -163.0
+offset_right = 401.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="ScoreCorner2/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-value = 50.0
+theme = ExtResource("3_ktb85")
+theme_override_font_sizes/font_size = 45
+text = "100 ~ Total Petals"
+horizontal_alignment = 2
+
+[node name="QuotaLabel" type="Label" parent="ScoreCorner2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+theme_override_colors/font_color = Color(0.796078, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "65000000 ~ Season Petals"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="ScoreCorner2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+text = "Not Enough Petals!"
+horizontal_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="ScoreCorner2/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+text = "Main Menu"
+script = ExtResource("17_44ob8")
+scene_path = "res://scenes/main_scenes/title_screen.tscn"
+
+[node name="QuitButton" type="Button" parent="ScoreCorner2/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+text = "Quit"
+script = ExtResource("18_itphs")
 
 [connection signal="pressed" from="Deck/EndSeasonButton" to="Deck" method="_on_end_season_button_pressed"]
 [connection signal="slot_selected" from="PlayCard/CardSlot" to="PlayCard" method="_on_card_slot_slot_selected"]

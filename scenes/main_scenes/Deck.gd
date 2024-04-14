@@ -58,8 +58,25 @@ func flip_card_to_slot(slot: CardSlot):
 
 func _next_round():
 	DemonManager.total_petals += DemonManager.season_petals
-	DemonManager.last_required_petals = DemonManager.required_petals_season
+	DemonManager.season_petals = 0
 	DemonManager.required_petals_season = pow((DemonManager.season_count), 2) * 2.2
+	
+	if DemonManager.total_petals < floor(DemonManager.required_petals_season):
+		$"../ScoreCorner2".visible = true
+		DemonManager.season_count = 0
+
+		DemonManager.season_petals = 0
+
+		DemonManager.total_petals = 0
+		DemonManager.required_petals_season = 0
+		DemonManager.last_required_petals = 0
+
+		DemonManager.extra_flip = false
+
+		DemonManager.special_summon = false
+		DemonManager.bird_ribbon_gold = false
+		DemonManager.summon_animals = false
+		get_tree().paused = true
 	
 	var emptied_board: bool = true
 	for slot in table_slots:

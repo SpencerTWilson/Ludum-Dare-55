@@ -80,7 +80,7 @@ explosiveness = 1.0
 [node name="Panel" type="Panel" parent="."]
 offset_left = 650.0
 offset_top = -1314.0
-offset_right = 1346.0
+offset_right = 1324.0
 offset_bottom = 491.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_nuii7")
@@ -191,16 +191,6 @@ lock_card = true
 
 [node name="CardSlot8" parent="Card Pool" instance=ExtResource("2_2i3qn")]
 position = Vector2(749, 128)
-can_drop = false
-lock_card = true
-
-[node name="CardSlot9" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(597, 376)
-can_drop = false
-lock_card = true
-
-[node name="CardSlot10" parent="Card Pool" instance=ExtResource("2_2i3qn")]
-position = Vector2(597, 126)
 can_drop = false
 lock_card = true
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=22 format=3 uid="uid://coqt385pnthu7"]
 
 [ext_resource type="PackedScene" uid="uid://bvqybkw7y0cq1" path="res://season.tscn" id="1_vkjov"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://scenes/main_scenes/ScoreCorner2.gd" id="17_a0gb6"]
 [ext_resource type="Script" path="res://scenes/main_scenes/RulesButton.gd" id="17_ut6rt"]
 [ext_resource type="Script" path="res://scenes/quit_button.gd" id="18_itphs"]
+[ext_resource type="Texture2D" uid="uid://djg0y3x2txyj" path="res://assets/textures/deamon/blue.png" id="19_k0nql"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuii7"]
 texture = ExtResource("2_w6qg6")
@@ -420,7 +421,7 @@ Your deck only starts with 2 copies of each plain card and special plain card. T
 [color=red]Rituals[/color] once per season:
 [*]Collect 3 ribbons => adds one copy of a ribbon
 [*]Collect 3 animals => adds one copy of an animal
-[*]Collect 16 cards => adds one copy of a bright"
+[*]Collect 20 cards => adds one copy of a bright"
 
 [node name="BackToGameButton" type="Button" parent="RulesCorner/VBoxContainer"]
 process_mode = 2
@@ -452,6 +453,50 @@ offset_bottom = 74.0
 theme = ExtResource("3_ktb85")
 text = "How To Play"
 script = ExtResource("17_ut6rt")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(197, 391)
+texture = ExtResource("19_k0nql")
+
+[node name="Panel4" type="Panel" parent="Node2D"]
+offset_left = -16.0
+offset_top = 566.0
+offset_right = 444.0
+offset_bottom = 802.0
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_nuii7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/Panel4"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 163.0
+offset_right = 447.0
+offset_bottom = 223.0
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="Button" type="Button" parent="Node2D/Panel4/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+text = "Summon"
+
+[node name="Button2" type="Button" parent="Node2D/Panel4/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+text = "Decline"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D/Panel4"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 14.0
+offset_right = 447.0
+offset_bottom = 155.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "I see you have recently BLANKED. You've caught my interest. You may summon me and I will BLANK, but I will require something of you. BLANK."
 
 [connection signal="pressed" from="Deck/EndSeasonButton" to="Deck" method="_on_end_season_button_pressed"]
 [connection signal="slot_selected" from="PlayCard/CardSlot" to="PlayCard" method="_on_card_slot_slot_selected"]

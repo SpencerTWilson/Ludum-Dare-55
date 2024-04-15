@@ -93,7 +93,8 @@ func _on_card_slot_slot_selected(_card, from_deck):
 			if card.tags.has("november") and card.tags.has("gold"):
 				score += 100
 	
-	if $CardSlot.cards.size() > 16:
+	if $CardSlot.cards.size() > 20 and can_summon_gold:
+		can_summon_gold = false
 		DemonManager._add_new_gold()
 	
 	score += gold_count * 25

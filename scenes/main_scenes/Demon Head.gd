@@ -75,6 +75,7 @@ func make_demon():
 		AudioManager._play_clip(demon_noise_enter, "SFX")
 		$Panel4/RichTextLabel.text = deals[deal]["text"]
 		$Panel4/HBoxContainer/SummonButton.visible = true
+		$GPUParticles2D.visible = true
 	else:
 		$Panel4/Label.text = "Earless Monk"
 		$Sprite2D.texture = guide_art

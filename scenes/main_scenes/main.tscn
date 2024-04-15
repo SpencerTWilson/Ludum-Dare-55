@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=31 format=3 uid="uid://coqt385pnthu7"]
+=======
+[gd_scene load_steps=38 format=3 uid="uid://coqt385pnthu7"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://bvqybkw7y0cq1" path="res://season.tscn" id="1_vkjov"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
@@ -23,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://djg0y3x2txyj" path="res://assets/textures/deamon/blue.png" id="19_k0nql"]
 [ext_resource type="Texture2D" uid="uid://dlmm70o2io3vr" path="res://assets/textures/deamon/red.png" id="20_31w4s"]
 [ext_resource type="AudioStream" uid="uid://cppwxax20blh6" path="res://assets/sounds/kenney_casino_audio/Audio/demon_intrigued.ogg" id="22_nmw4h"]
+[ext_resource type="Texture2D" uid="uid://f7g4fwf2v332" path="res://assets/textures/deamon/hoichi.png" id="23_8dgu0"]
 [ext_resource type="AudioStream" uid="uid://bil872pjke1tw" path="res://assets/sounds/kenney_casino_audio/Audio/guide_intro.ogg" id="23_63rhv"]
 [ext_resource type="Texture2D" uid="uid://nom4p6e0jxfl" path="res://assets/textures/deamon/hoichi.png" id="23_lk138"]
 [ext_resource type="AudioStream" uid="uid://bxw4432ye7rb6" path="res://assets/sounds/kenney_casino_audio/Audio/demon_laugh.ogg" id="23_yds0f"]
@@ -42,6 +47,50 @@ texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
+
+[sub_resource type="Curve" id="Curve_0f7lk"]
+min_value = -0.5
+max_value = 0.5
+_data = [Vector2(0, 0.489011), 0.0, -0.989011, 0, 1, Vector2(1, -0.5), -0.989011, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gklje"]
+curve = SubResource("Curve_0f7lk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6fwg4"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_gklje")
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_ymkf4"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.480519, 1)
+colors = PackedColorArray(0.360784, 0.0784314, 0.545098, 0, 0.360784, 0.0784314, 0.545098, 1, 0.360784, 0.0784314, 0.545098, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lu18n"]
+gradient = SubResource("Gradient_ymkf4")
+width = 1000
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hmxyw"]
+particle_flag_disable_z = true
+orbit_velocity_min = -1.011
+orbit_velocity_max = 0.517
+radial_velocity_min = 60.0
+radial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_4o2r2"]
+offsets = PackedFloat32Array(0, 0.551948)
+colors = PackedColorArray(0.243514, 0.0393241, 0.376177, 1, 0.360784, 0.0784314, 0.545098, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_egew6"]
+gradient = SubResource("Gradient_4o2r2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Main" type="Node2D"]
 
@@ -352,7 +401,11 @@ demon_art_2 = ExtResource("19_k0nql")
 demon_noise_enter = ExtResource("22_nmw4h")
 demon_noise_accept = ExtResource("23_yds0f")
 demon_noise_decline = ExtResource("24_envsa")
+<<<<<<< Updated upstream
 guide_art = ExtResource("23_lk138")
+=======
+guide_art = ExtResource("23_8dgu0")
+>>>>>>> Stashed changes
 guide_enter = ExtResource("23_63rhv")
 guide_leave = ExtResource("24_bfw5d")
 
@@ -408,6 +461,22 @@ offset_bottom = 253.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "I see you have recently BLANKED. You've caught my interest. You may [color=red]summon[/color] me and I will BLANK, but I will require something of you. BLANK."
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Demon Head"]
+visible = false
+z_index = -1
+position = Vector2(66, 544)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_6fwg4")
+texture = SubResource("GradientTexture2D_lu18n")
+lifetime = 7.46
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Demon Head/GPUParticles2D"]
+position = Vector2(66, 13)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_hmxyw")
+texture = SubResource("GradientTexture2D_egew6")
+lifetime = 7.46
 
 [node name="RulesCorner" type="Control" parent="."]
 visible = false

@@ -263,6 +263,7 @@ lifetime = 600.0
 explosiveness = 1.0
 
 [node name="spring" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -303,7 +304,6 @@ texture = ExtResource("6_k2ou3")
 lifetime = 20.25
 
 [node name="winter" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

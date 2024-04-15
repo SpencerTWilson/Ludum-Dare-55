@@ -2,6 +2,7 @@ extends Node
 
 signal scores_updated
 signal new_season
+signal demon_done
 
 var season_count: int = 0
 

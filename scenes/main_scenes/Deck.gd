@@ -14,6 +14,8 @@ var deck_of_cards: Array = []
 var shuffle_sound: AudioStream = preload("res://assets/sounds/kenney_casino_audio/Audio/cardFan2.ogg")
 var shuffle_sound_2: AudioStream = preload("res://assets/sounds/kenney_casino_audio/Audio/cardFan1.ogg")
 
+var remove_cards: int = 0
+
 func _ready():
 	var i: int = 0
 	for slot in table_slots:
@@ -37,10 +39,15 @@ func _set_up_round():
 		flip_card_to_slot(table_slots[index])
 		await get_tree().create_timer(0.05).timeout
 	#This is hand Cards
-	for index in range(8):
+	if remove_cards < 0:
+		print(remove_cards)
+		print(8 - remove_cards)
+	for index in range(8 - remove_cards):
 		flip_card_to_slot(hand_slot)
 		await get_tree().create_timer(0.05).timeout
 	$EndSeasonButton.disabled = false
+	
+	remove_cards = 0
 
 func flip_card_to_slot(slot: CardSlot):
 	var new_card_type = deck_of_cards.pop_back()
@@ -118,13 +125,16 @@ func _next_round():
 		card.queue_free()
 	$CardSlot.cards.clear()
 	
+	$"../Season".Season += 1
+	if $"../Season".Season > 3:
+		$"../Season".Season = 0
+	
 	DemonManager.season_count += 1
 	DemonManager.new_season.emit()
 	DemonManager.scores_updated.emit()
 	
-	$"../Season".Season += 1
-	if $"../Season".Season > 3:
-		$"../Season".Season = 0
+	if DemonManager.season_count % 4 == 2:
+		await DemonManager.demon_done
 	
 	_set_up_round()
 	
@@ -150,13 +160,6 @@ func _add_cards(cards_to_add: Array):
 	
 	AudioManager._play_clip(shuffle_sound_2, "SFX")
 	deck_of_cards.shuffle()
-	
-#TODO:
-#5. Make a hand guide, that can expand
-#7. Make a deamon manager
-#8. Make a deamon altar for satiating the deamons
-#9. YEY! You did something!
-
 
 func _on_end_season_button_pressed():
 	_next_round()

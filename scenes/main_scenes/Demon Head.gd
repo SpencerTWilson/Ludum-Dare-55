@@ -19,22 +19,34 @@ var is_guide: bool = true
 @export var guide_leave: AudioStream
 
 var deals: Dictionary = {
-	"draw_card": {
-		"text": "card draw that cost 5 points to use but I take 10 points each round.",
-		"func": start_card_draw,
+	"mult": {
+		"text": "You've caught my interest. You may [color=red]summon[/color] me and I will multiply the next rounds petals by 2, but I will require something of you, 2 of your cards from your hand next season.",
+		"func": next_mult.bind(2, 2),
 	},
-	"ribbon_mult": {
-		"text": "ribbons * 2 points but the deck looses up to 5 ribbons",
-		"func": start_ribbon_mult,
+	"mult_extreme": {
+		"text": "You've caught my interest. You may [color=red]summon[/color] me and I will multiply the next rounds petals by 6, but I will require something of you, 5 of your cards from your hand next season.",
+		"func": next_mult.bind(6, 5),
 	},
-	"extra_table_slot": {
-		"text": "extra table slot but I remove 3 random cards",
-		"func": start_extra_table_slot,
+	"hand_grow": {
+		"text": "You've caught my interest. You may [color=red]summon[/color] me and I will add 5 cards to your next hand, but I will require something of you, a third of the next season's petals.",
+		"func": next_mult.bind(-0.3, -5),
 	},
-	"plain eater": {
-		"text": "I take 3 random plain cards but I take 100 points",
-		"func": steal_plain_cards,
-	}
+	"small_hand_grow": {
+		"text": "You've caught my interest. You may [color=red]summon[/color] me and I will add 2 cards to your next hand, but I will require something of you, 4 petals.",
+		"func": little_card_draw,
+	},
+	"add_ribbon": {
+		"text": "You've caught my interest. You may [color=red]summon[/color] me and I will add 8 random ribbon cards to your deck, but I will require something of you, 10 petals.",
+		"func": add_ribbons,
+	},
+	"add_animal": {
+		"text": "You've caught my interest. You may [color=red]summon[/color] me and I will add 5 random ribbon cards to your deck, but I will require something of you, 15 petals.",
+		"func": add_animals,
+	},
+	"add_gold": {
+		"text": "You've caught my interest. You may [color=red]summon[/color] me and I will add 2 random bright cards to your deck, but I will require something of you, 20 petals.",
+		"func": add_gold,
+	},
 }
 
 func _ready():
@@ -67,31 +79,41 @@ func make_demon():
 		$Panel4/Label.text = "Earless Monk"
 		$Sprite2D.texture = guide_art
 		AudioManager._play_clip(guide_enter, "SFX")
-		$Panel4/RichTextLabel.text = "I am a guide!"
+		$Panel4/RichTextLabel.text = "The goal is to gather [color=Orchid]flower petals![/color]
+To do this you must match cards in your hand with cards that share a month with it in the card pool.
+Simply drag a card into the play slot. You must gather enough petals to out pace the season! But don't worry the first two seasons have no petal requirement to allow you to prepare. Oni will visit you once a year when they notice you. and completeling rituals will boost your deck."
 		$Panel4/HBoxContainer/SummonButton.visible = false
 
-func start_card_draw():
-	print("hey")
-	#DemonManager.extra_card_draw = true
+func little_card_draw():
+	$"../Deck".remove_cards = -2
+	DemonManager.total_petals -= 4
 	
-func start_ribbon_mult():
-	print("hey")
-	#DemonManager.ribbon_mult += 1
+func next_mult(mult: float, remove: int):
+	$"../CollectedCards".mult += mult
+	$"../Deck".remove_cards = remove
 
-func start_extra_table_slot():
-	print("hey")
-	pass
+func add_ribbons():
+	DemonManager.total_petals -= 10
+	for i in range(8):
+		DemonManager._summon_new_ribbon()
 	
-func steal_plain_cards():
-	pass
+func add_animals():
+	DemonManager.total_petals -= 15
+	for i in range(5):
+		DemonManager._summon_new_animal()
 
+func add_gold():
+	DemonManager.total_petals -= 20
+	for i in range(2):
+		DemonManager._add_new_gold()
 
 func _on_summon_button_pressed():
 	on_screen = false
 	AudioManager._play_clip(demon_noise_accept, "SFX")
-	deals[deal]["func"].call()
 	get_tree().paused = false
-	
+	deals[deal]["func"].call()
+	DemonManager.scores_updated.emit()
+	DemonManager.demon_done.emit()
 
 func _on_decline_button_pressed():
 	on_screen = false
@@ -101,3 +123,4 @@ func _on_decline_button_pressed():
 	else:
 		AudioManager._play_clip(demon_noise_decline, "SFX")
 	get_tree().paused = false
+	DemonManager.demon_done.emit()

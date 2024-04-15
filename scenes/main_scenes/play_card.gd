@@ -13,6 +13,7 @@ func _ready():
 		i += 1
 
 func _on_card_slot_slot_selected(card, from_deck):
+	$CardSlot.can_drop = false
 	for slot in table_slots:
 		if slot.cards.size() > 0:
 			if slot.cards[0].tags.has(CardManager.get_month(card)):
@@ -29,10 +30,11 @@ func _on_card_slot_slot_selected(card, from_deck):
 	
 	if $CardSlot.cards.size() > 0:
 		$CardSlot._remove_card(card)
+		$CardSlot.can_drop = true
 		if from_deck:
 			for slot in table_slots:
 				if slot.cards.size() < 1:
 					slot._select(card)
 					return
 		hand._select(card)
-	
+		

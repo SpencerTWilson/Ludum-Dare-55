@@ -6,6 +6,8 @@ var can_summon_ribbon = true
 var can_summon_animal = true
 var can_summon_gold = true
 
+var mult: float
+
 func _ready():
 	DemonManager.new_season.connect(_new_season)
 
@@ -13,6 +15,8 @@ func _new_season():
 	can_summon_ribbon = true
 	can_summon_animal = true
 	can_summon_gold = true
+	
+	mult = 0
 	
 	if DemonManager.season_count % 4 == 2:
 		$"../Demon Head".make_demon()
@@ -101,6 +105,11 @@ func _on_card_slot_slot_selected(_card, from_deck):
 		DemonManager._add_new_gold()
 	
 	score += gold_count * 25
+	
+	if mult > 0:
+		score *= mult
+	if mult < 0:
+		score /= abs(mult)
 	
 	DemonManager.season_petals = score
 	DemonManager.scores_updated.emit()

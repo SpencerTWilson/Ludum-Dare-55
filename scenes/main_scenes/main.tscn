@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=30 format=3 uid="uid://coqt385pnthu7"]
 
 [ext_resource type="PackedScene" uid="uid://bvqybkw7y0cq1" path="res://season.tscn" id="1_vkjov"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dlmm70o2io3vr" path="res://assets/textures/deamon/red.png" id="20_31w4s"]
 [ext_resource type="AudioStream" uid="uid://cppwxax20blh6" path="res://assets/sounds/kenney_casino_audio/Audio/demon_intrigued.ogg" id="22_nmw4h"]
 [ext_resource type="AudioStream" uid="uid://bil872pjke1tw" path="res://assets/sounds/kenney_casino_audio/Audio/guide_intro.ogg" id="23_63rhv"]
+[ext_resource type="Texture2D" uid="uid://nom4p6e0jxfl" path="res://assets/textures/deamon/hoichi.png" id="23_lk138"]
 [ext_resource type="AudioStream" uid="uid://bxw4432ye7rb6" path="res://assets/sounds/kenney_casino_audio/Audio/demon_laugh.ogg" id="23_yds0f"]
 [ext_resource type="AudioStream" uid="uid://bwldg4v6xovm1" path="res://assets/sounds/kenney_casino_audio/Audio/guide_leave.ogg" id="24_bfw5d"]
 [ext_resource type="AudioStream" uid="uid://wesvrfkbw72v" path="res://assets/sounds/kenney_casino_audio/Audio/demon_sad.ogg" id="24_envsa"]
@@ -349,7 +350,7 @@ demon_art_2 = ExtResource("19_k0nql")
 demon_noise_enter = ExtResource("22_nmw4h")
 demon_noise_accept = ExtResource("23_yds0f")
 demon_noise_decline = ExtResource("24_envsa")
-guide_art = ExtResource("19_k0nql")
+guide_art = ExtResource("23_lk138")
 guide_enter = ExtResource("23_63rhv")
 guide_leave = ExtResource("24_bfw5d")
 
@@ -466,9 +467,9 @@ layout_mode = 2
 bbcode_enabled = true
 text = "The goal is to gather [color=Orchid]flower petals![/color]
 To do this you must match cards in your hand with cards that share a month with it in the card pool.
-Simply drag a card into the play slot.
+Simply drag a card into the play slot. You must gather enough petals to out pace the season! But don't worry the first two seasons have no petal requirement to allow you to prepare.
 
-You gain petals based off a few critiera, they are as follows:
+You gain petals based off a few criteria, they are as follows:
 
 [color=Orchid]+1 petal[/color] per card
 [color=Orchid]+2 petals[/color] per special card

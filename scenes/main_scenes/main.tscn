@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=21 format=3 uid="uid://coqt385pnthu7"]
 
 [ext_resource type="PackedScene" uid="uid://bvqybkw7y0cq1" path="res://season.tscn" id="1_vkjov"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://cgf3t8std37gc" path="res://assets/textures/fantasy_border_ui/PNG/Panel/panel-004.png" id="10_x8hp8"]
 [ext_resource type="Texture2D" uid="uid://big8g08665q6m" path="res://assets/textures/icons/PNG/White/1x/import.png" id="11_kwyni"]
 [ext_resource type="Script" path="res://scenes/main_scenes/ScoreCalculator.gd" id="15_hw7f0"]
+[ext_resource type="Script" path="res://scenes/main_scenes/BackToGameButton.gd" id="17_2dbnm"]
 [ext_resource type="Script" path="res://scenes/change_scene.gd" id="17_44ob8"]
 [ext_resource type="Script" path="res://scenes/main_scenes/ScoreCorner2.gd" id="17_a0gb6"]
+[ext_resource type="Script" path="res://scenes/main_scenes/RulesButton.gd" id="17_ut6rt"]
 [ext_resource type="Script" path="res://scenes/quit_button.gd" id="18_itphs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuii7"]
@@ -357,10 +359,10 @@ grow_vertical = 2
 [node name="Panel4" type="Panel" parent="RulesCorner"]
 modulate = Color(0.180392, 0, 0, 1)
 layout_mode = 0
-offset_left = -102.0
-offset_top = -360.0
-offset_right = 598.0
-offset_bottom = 240.0
+offset_left = -122.0
+offset_top = -615.0
+offset_right = 618.0
+offset_bottom = 375.0
 size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_nuii7")
@@ -371,10 +373,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 59.0
-offset_top = -163.0
-offset_right = 401.0
-offset_bottom = -25.0
+offset_left = -35.0
+offset_top = -593.0
+offset_right = 495.0
+offset_bottom = 291.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -385,7 +387,47 @@ text = "Rules"
 horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="RulesCorner/VBoxContainer"]
+process_mode = 2
+custom_minimum_size = Vector2(0, 650)
 layout_mode = 2
+bbcode_enabled = true
+text = "The goal is to gather [color=Orchid]flower petals![/color]
+To do this you must match cards in your hand with cards that share a month with it in the card pool.
+Simply drag a card into the play slot.
+
+You gain petals based off a few critiera, they are as follows:
+
+[color=Orchid]+1 petal[/color] per card
+[color=Orchid]+2 petals[/color] per special card
+[color=Orchid]+20 petals[/color] per 5 ribbon cards
+[color=gray][i]* all ribbons count[/i][/color]
+[color=Orchid]+15 petals[/color] per 3 blue ribbons
+[color=Orchid]+15 petals[/color] per 3 poetry ribbons
+[color=Orchid]+8 petals[/color] per animal
+[color=gray][i]* birds count as animals[/i][/color]
+[color=Orchid]+8 petals[/color] per bird
+[color=gray][i]* there is a card w/ 3 birds[/i][/color]
+[color=Orchid]+25 petals[/color] per bright
+[color=Orchid]+100 petals[/color] if you have the moon and 3 other bright cards
+
+Your deck only starts with 2 copies of each plain card and special plain card. To fix this you must do the [color=red]ritual to summon[/color] the cards to the deck. Each ritual will add different cards as follows:
+
+[color=red]Rituals[/color] once per game:
+[*]Collect a special plain => adds one copy of each basic ribbon
+[*]Have no plains in your collection when you play a card => adds one copy of each animal that isn't a bird
+[*]Have fewer ribbons than animals collected when you play a card => adds a copy of the moon bright
+
+[color=red]Rituals[/color] once per season:
+[*]Collect 3 ribbons => adds one copy of a ribbon
+[*]Collect 3 animals => adds one copy of an animal
+[*]Collect 16 cards => adds one copy of a bright"
+
+[node name="BackToGameButton" type="Button" parent="RulesCorner/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+text = "Back To Game"
+script = ExtResource("17_2dbnm")
 
 [node name="MainMenuButton" type="Button" parent="RulesCorner/VBoxContainer"]
 process_mode = 2
@@ -401,6 +443,15 @@ layout_mode = 2
 theme = ExtResource("3_ktb85")
 text = "Quit"
 script = ExtResource("18_itphs")
+
+[node name="RulesButton" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 234.0
+offset_bottom = 74.0
+theme = ExtResource("3_ktb85")
+text = "How To Play"
+script = ExtResource("17_ut6rt")
 
 [connection signal="pressed" from="Deck/EndSeasonButton" to="Deck" method="_on_end_season_button_pressed"]
 [connection signal="slot_selected" from="PlayCard/CardSlot" to="PlayCard" method="_on_card_slot_slot_selected"]

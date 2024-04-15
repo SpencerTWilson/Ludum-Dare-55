@@ -1,6 +1,25 @@
 extends Node2D
 
-@export var table_slots: Array = []
+@export var table_slot_1: Node
+@export var table_slot_2: Node
+@export var table_slot_3: Node
+@export var table_slot_4: Node
+@export var table_slot_5: Node
+@export var table_slot_6: Node
+@export var table_slot_7: Node
+@export var table_slot_8: Node
+
+@onready var table_slots: Array = [
+	table_slot_1,
+	table_slot_2,
+	table_slot_3,
+	table_slot_4,
+	table_slot_5,
+	table_slot_6,
+	table_slot_7,
+	table_slot_8,
+]
+
 @export var hand_slot: CardSlot
 
 @export var collected_cards_slot: CardSlot
@@ -17,11 +36,6 @@ var shuffle_sound_2: AudioStream = preload("res://assets/sounds/kenney_casino_au
 var remove_cards: int = 0
 
 func _ready():
-	var i: int = 0
-	for slot in table_slots:
-		table_slots[i] = get_node(slot)
-		i += 1
-	
 	for card_type in CardManager.card_types.keys():
 		if CardManager.card_types[card_type]["tags"].has("plain"):
 			deck_of_cards.append(CardManager.card_types[card_type])

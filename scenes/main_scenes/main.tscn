@@ -110,10 +110,17 @@ position = Vector2(969, 980)
 script = ExtResource("2_blfti")
 num_cards_allowed = 32
 
-[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("hand_slot", "collected_cards_slot") groups=["deck"]]
+[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("table_slot_1", "table_slot_2", "table_slot_3", "table_slot_4", "table_slot_5", "table_slot_6", "table_slot_7", "table_slot_8", "hand_slot", "collected_cards_slot") groups=["deck"]]
 position = Vector2(1735, 526)
 script = ExtResource("2_uxd76")
-table_slots = [NodePath("../Card Pool/CardSlot"), NodePath("../Card Pool/CardSlot2"), NodePath("../Card Pool/CardSlot3"), NodePath("../Card Pool/CardSlot4"), NodePath("../Card Pool/CardSlot5"), NodePath("../Card Pool/CardSlot6"), NodePath("../Card Pool/CardSlot7"), NodePath("../Card Pool/CardSlot8")]
+table_slot_1 = NodePath("../Card Pool/CardSlot")
+table_slot_2 = NodePath("../Card Pool/CardSlot2")
+table_slot_3 = NodePath("../Card Pool/CardSlot3")
+table_slot_4 = NodePath("../Card Pool/CardSlot4")
+table_slot_5 = NodePath("../Card Pool/CardSlot5")
+table_slot_6 = NodePath("../Card Pool/CardSlot6")
+table_slot_7 = NodePath("../Card Pool/CardSlot7")
+table_slot_8 = NodePath("../Card Pool/CardSlot8")
 hand_slot = NodePath("../Hand")
 collected_cards_slot = NodePath("../CollectedCards/CardSlot")
 card_scene = ExtResource("2_neq0k")

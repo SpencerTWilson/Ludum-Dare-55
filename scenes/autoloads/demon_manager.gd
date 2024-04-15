@@ -68,7 +68,7 @@ func _ribbon_summon():
 func _summon_bird_ribbon_gold():
 	if !bird_ribbon_gold:
 		bird_ribbon_gold = true
-		get_tree().get_nodes_in_group("deck")[0]._add_cards([CardManager.card_types["august_gold"]])
+		get_tree().get_nodes_in_group("deck")[0]._add_cards([CardManager.card_types["november_gold"]])
 
 func _summon_animals():
 	if !summon_animals:

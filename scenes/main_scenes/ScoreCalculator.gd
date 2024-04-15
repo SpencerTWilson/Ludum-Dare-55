@@ -4,6 +4,7 @@ var score: int = 0
 
 var can_summon_ribbon = true
 var can_summon_animal = true
+var can_summon_gold = true
 
 func _ready():
 	DemonManager.new_season.connect(_new_season)
@@ -11,6 +12,7 @@ func _ready():
 func _new_season():
 	can_summon_ribbon = true
 	can_summon_animal = true
+	can_summon_gold = true
 
 func _on_card_slot_slot_selected(_card, from_deck):
 	score = 0
@@ -90,6 +92,9 @@ func _on_card_slot_slot_selected(_card, from_deck):
 		for card in $CardSlot.cards:
 			if card.tags.has("november") and card.tags.has("gold"):
 				score += 100
+	
+	if $CardSlot.cards.size() > 16:
+		DemonManager._add_new_gold()
 	
 	score += gold_count * 25
 	

@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://coqt385pnthu7"]
 
-[ext_resource type="PackedScene" uid="uid://bq8b7rfnd0pxo" path="res://season.tscn" id="1_vkjov"]
+[ext_resource type="PackedScene" uid="uid://bvqybkw7y0cq1" path="res://season.tscn" id="1_vkjov"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]
 [ext_resource type="Script" path="res://scenes/main_scenes/cards/card_slot_hand.gd" id="2_blfti"]
 [ext_resource type="PackedScene" uid="uid://blid8q76f6ek8" path="res://scenes/main_scenes/cards/Card.tscn" id="2_neq0k"]
@@ -325,6 +325,77 @@ script = ExtResource("17_44ob8")
 scene_path = "res://scenes/main_scenes/title_screen.tscn"
 
 [node name="QuitButton" type="Button" parent="ScoreCorner2/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+text = "Quit"
+script = ExtResource("18_itphs")
+
+[node name="RulesCorner" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 741.0
+offset_top = 665.0
+offset_right = 781.0
+offset_bottom = 705.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="RulesCorner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1643.0
+offset_top = -1855.0
+offset_right = 2317.0
+offset_bottom = 2105.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel4" type="Panel" parent="RulesCorner"]
+modulate = Color(0.180392, 0, 0, 1)
+layout_mode = 0
+offset_left = -102.0
+offset_top = -360.0
+offset_right = 598.0
+offset_bottom = 240.0
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_nuii7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RulesCorner"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 59.0
+offset_top = -163.0
+offset_right = 401.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="RulesCorner/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+text = "Rules"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RulesCorner/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="RulesCorner/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme = ExtResource("3_ktb85")
+text = "Main Menu"
+script = ExtResource("17_44ob8")
+scene_path = "res://scenes/main_scenes/title_screen.tscn"
+
+[node name="QuitButton" type="Button" parent="RulesCorner/VBoxContainer"]
 process_mode = 2
 layout_mode = 2
 theme = ExtResource("3_ktb85")

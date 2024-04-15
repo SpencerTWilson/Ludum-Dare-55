@@ -122,6 +122,10 @@ func _next_round():
 	DemonManager.new_season.emit()
 	DemonManager.scores_updated.emit()
 	
+	$"../Season".Season += 1
+	if $"../Season".Season > 3:
+		$"../Season".Season = 0
+	
 	_set_up_round()
 	
 func _add_cards(cards_to_add: Array):

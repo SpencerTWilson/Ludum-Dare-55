@@ -13,6 +13,9 @@ func _new_season():
 	can_summon_ribbon = true
 	can_summon_animal = true
 	can_summon_gold = true
+	
+	if DemonManager.season_count % 4 == 2:
+		$"../Demon Head".make_demon()
 
 func _on_card_slot_slot_selected(_card, from_deck):
 	score = 0

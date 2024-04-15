@@ -13,6 +13,7 @@ func _ready():
 	current_music = AudioStreamPlayer.new()
 	current_music.bus = "Music"
 	add_child(current_music)
+	current_music.process_mode = Node.PROCESS_MODE_ALWAYS
 	current_music.finished.connect(_continue_audio.bind(current_music))
 
 func _process(_delta):
@@ -42,6 +43,8 @@ func _play_clip_loop(audio_clip: AudioStream, bus: String, access_tag: String):
 	new_player.finished.connect(_continue_audio.bind(new_player))
 	add_child(new_player)
 	#add it to our list to be able to free the node when done
+	if get_tree().paused:
+		new_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	looping_audio_clips[access_tag] = new_player
 	new_player.play()
 

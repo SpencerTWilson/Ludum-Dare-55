@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://b2o4k7i5ie3u0" path="res://assets/textures/fantasy_border_ui/PNG/Border/panel-border-025.png" id="1_gqeaa"]
 [ext_resource type="Theme" uid="uid://dl56t6bt2n25f" path="res://ui/title.tres" id="2_x61j1"]
 [ext_resource type="Theme" uid="uid://ceqt81jsw2vwa" path="res://ui/title_theme.tres" id="3_bwyia"]
+[ext_resource type="AudioStream" uid="uid://ccpn2rqd0mgf8" path="res://assets/sounds/kenney_casino_audio/Audio/wind.ogg" id="4_62ayc"]
 [ext_resource type="Script" path="res://scenes/main_scenes/start_music.gd" id="4_aweca"]
 [ext_resource type="Script" path="res://scenes/change_scene.gd" id="4_gd4kd"]
 [ext_resource type="Texture2D" uid="uid://dmv2jxkv707u4" path="res://assets/textures/fantasy_border_ui/PNG/Border/panel-border-022.png" id="4_kobt7"]
 [ext_resource type="Script" path="res://scenes/quit_button.gd" id="5_cx4ok"]
 [ext_resource type="Texture2D" uid="uid://brregv58ikpyw" path="res://assets/textures/icons/Vector/vector_whiteIcons.svg" id="7_aym2q"]
-[ext_resource type="AudioStream" uid="uid://bnc5nvfovfdbb" path="res://assets/sounds/music/wind.wav" id="11_wyqff"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyf7r"]
 texture = ExtResource("1_gqeaa")
@@ -74,7 +74,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_lyf7r")
 script = ExtResource("4_aweca")
-music_track = ExtResource("11_wyqff")
+music_track = ExtResource("4_62ayc")
 
 [node name="Background" type="Panel" parent="Background2"]
 modulate = Color(0.411765, 0.113725, 0.12549, 1)

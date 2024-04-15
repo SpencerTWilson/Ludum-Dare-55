@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://di8inkqpqvh3w"
+path="res://.godot/imported/gam jam.ogg-5f0c26bb52a46dfed5cebcf0e01f56f9.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/kenney_casino_audio/Audio/gam jam.ogg"
+dest_files=["res://.godot/imported/gam jam.ogg-5f0c26bb52a46dfed5cebcf0e01f56f9.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

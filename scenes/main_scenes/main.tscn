@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://coqt385pnthu7"]
+[gd_scene load_steps=31 format=3 uid="uid://b0yb6p4bb1y1c"]
 
 [ext_resource type="PackedScene" uid="uid://bvqybkw7y0cq1" path="res://season.tscn" id="1_vkjov"]
 [ext_resource type="PackedScene" uid="uid://b21f6ysdksu0w" path="res://scenes/main_scenes/cards/CardSlot.tscn" id="2_2i3qn"]

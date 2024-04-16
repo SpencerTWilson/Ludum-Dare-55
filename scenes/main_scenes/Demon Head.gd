@@ -40,7 +40,7 @@ var deals: Dictionary = {
 		"func": add_ribbons,
 	},
 	"add_animal": {
-		"text": "You've caught my interest. You may [color=red]summon[/color] me and I will add 5 random ribbon cards to your deck, but I will require something of you, 15 petals.",
+		"text": "You've caught my interest. You may [color=red]summon[/color] me and I will add 5 random animal cards to your deck, but I will require something of you, 15 petals.",
 		"func": add_animals,
 	},
 	"add_gold": {
